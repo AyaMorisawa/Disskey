@@ -4,12 +4,6 @@ import { sauth } from '../misskey';
 
 var { div, input, button } = React.DOM;
 
-/*
-sauth.getUserKey(config.sauthAppKey, sessionKey, pincode).then(data => {
-	console.log(data);
-});
-*/
-
 interface IAppState {
 	userKey?: string;
 	inputPincode?: string;
@@ -46,17 +40,17 @@ var App = React.createClass({
 		});
 	},
 	render() {
-		return div({}, 
-	    	div({}, 'Enter the pincode.'), 
-	    	input({
+		return div({},
+			div({}, 'Enter the pincode.'),
+			input({
 				type: 'text',
 				input: this.state.inputPinCode,
-				onChange: this.changeInputPincode,
-			}), 
-	        button({
+				onChange: this.changeInputPincode
+			}),
+			button({
 				onClick: this.submitPincode
 			}, 'Submit')
-    	);
+		);
 	}
 });
 
