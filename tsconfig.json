@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"noEmitOnError": true,
+		"noImplicitAny": true,
+		"sourceMap": false,
+		"module": "commonjs",
+		"target": "ES5",
+		"removeComments": true,
+		"noLib": false
+	},
+	"files": [
+		"typings/bundle.d.ts",
+		"src/index.ts",
+		"src/main/main.ts"
+	]
+}

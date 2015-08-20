@@ -1,0 +1,26 @@
+{
+  "repos": [
+    {
+      "url": "https://github.com/borisyankov/DefinitelyTyped.git",
+      "ref": "master"
+    }
+  ],
+  "path": "typings",
+  "bundle": "typings/bundle.d.ts",
+  "link": {
+    "npm": {
+      "include": true
+    }
+  },
+  "dependencies": {
+    "node/node.d.ts": {
+      "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
+    },
+    "react/react.d.ts": {
+      "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
+    },
+    "github-electron/github-electron-main.d.ts": {
+      "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
+    }
+  }
+}

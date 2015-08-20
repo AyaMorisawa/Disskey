@@ -1,0 +1,20 @@
+{
+  "name": "disskey",
+  "version": "0.0.1",
+  "description": "Misskey client for desktop",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "dtsm": "^0.10.3",
+    "typescript": "^1.5.3"
+  },
+  "dependencies": {
+    "electron-prebuilt": "^0.30.4",
+    "react": "^0.13.3"
+  }
+}
