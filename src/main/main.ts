@@ -1,4 +1,10 @@
 import * as React from 'react';
+import config from '../config';
+import misskey from '../misskey';
+
+misskey.sauth.getSessionKey(config.sauthAppKey).then(({ authenticationSessionKey: sessionKey }) => {
+	console.log(sessionKey);
+});
 
 var App = React.createClass({
 	render: function() {
