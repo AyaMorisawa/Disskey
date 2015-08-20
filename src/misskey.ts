@@ -1,18 +1,39 @@
 import * as request from 'request-promise';
+import open = require('open');
 
-function getSessionKey(appKey: string): Promise<{ authenticationSessionKey: string }> {
-	return request({
-		url: 'https://api.misskey.xyz/sauth/get-authentication-session-key',
-		method: 'GET',
-		headers: {
-			'sauth-app-key': appKey
-		},
-		json: true
-	});
-}
+var baseUrl = 'https://api.misskey.xyz';
 
-export default {
-	sauth: {
-		getSessionKey: getSessionKey
+export namespace sauth {
+	export function getSessionKey(appKey: string): Promise<string> {
+		return request({
+			url: `${baseUrl}/sauth/get-authentication-session-key`,
+			method: 'GET',
+			headers: {
+				'sauth-app-key': appKey
+			},
+			json: true,
+			transform: (data: { authenticationSessionKey: string }): any => {
+				return data.authenticationSessionKey;
+			}
+		});
+	}
+
+	export function openAuthorizePage(sessionKey: string) {
+		open(`${baseUrl}/authorize@${sessionKey}`);
+	}
+	
+	export function getUserKey(appKey: string, sessionKey: string, pincode: string) {
+		return request({
+			url: `${baseUrl}/sauth/get-user-key`,
+			method: 'GET',
+			headers: {
+				'sauth-app-key': appKey
+			},
+			form: {
+				'authentication-session-key': sessionKey,
+				'pin-code': pincode
+			},
+			json: true
+		});
 	}
 }

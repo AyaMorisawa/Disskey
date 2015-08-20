@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "electron-prebuilt": "^0.30.4",
+    "misskey": "^0.1.4",
+    "open": "0.0.5",
     "react": "^0.13.3",
     "request": "^2.61.0",
     "request-promise": "^0.4.3"
