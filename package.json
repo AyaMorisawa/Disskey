@@ -6,11 +6,13 @@
   "scripts": {
     "start": "electron .",
     "build": "tsc",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "lint": "tslint src/**/*.ts"
   },
   "license": "MIT",
   "devDependencies": {
     "dtsm": "^0.10.3",
+    "tslint": "^2.4.2",
     "typescript": "^1.5.3"
   },
   "dependencies": {
