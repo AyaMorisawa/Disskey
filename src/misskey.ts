@@ -12,19 +12,12 @@ export namespace sauth {
 	export var baseUrl = 'https://api.misskey.xyz';
 	
 	export class Session {
-		private _appKey: string;
-		public get appKey(): string {
-			return this._appKey;
-		}
-		
-		private _sessionKey: string;
-		public get sessionKey(): string {
-			return this._sessionKey;
-		}
+		appKey: string;
+		sessionKey: string;
 		
 		constructor(appKey: string, sessionKey: string) {
-			this._appKey = appKey;
-			this._sessionKey = sessionKey;
+			this.appKey = appKey;
+			this.sessionKey = sessionKey;
 		}
 		
 		openAuthorizePage() {
