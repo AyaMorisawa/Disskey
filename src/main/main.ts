@@ -2,19 +2,61 @@ import * as React from 'react';
 import config from '../config';
 import { sauth } from '../misskey';
 
-sauth.getSessionKey(config.sauthAppKey).then(sessionKey => {
-	// sauth.openAuthorizePage(sessionKey);
-	console.log(sessionKey);
-});
+var { div, input, button } = React.DOM;
+
 /*
 sauth.getUserKey(config.sauthAppKey, sessionKey, pincode).then(data => {
 	console.log(data);
 });
 */
 
+interface IAppState {
+	userKey?: string;
+	inputPincode?: string;
+	session: string;
+}
+
 var App = React.createClass({
-	render: function() {
-		return React.DOM.div({}, 'Disskey is a Misskey client for desktop');
+	componentDidMount() {
+		var existUserKey = false; // temporary
+		if (existUserKey) {
+		} else {
+			sauth.createSession(config.sauthAppKey).then(session => {
+				this.setState({session});
+				session.openAuthorizePage();
+			});
+		}
+	},
+	getInitialState(): IAppState {
+		return {
+			userKey: null,
+			inputPincode: '',
+			session: null
+		};
+	},
+	changeInputPincode(e: any) {
+		this.setState({inputPincode: e.target.value});
+	},
+	submitPincode() {
+		var pincode: string = this.state.inputPincode;
+		var session: sauth.Session = this.state.session;
+		session.getUserKey(pincode).then(({userKey, user}) => {
+			console.log(userKey);
+			console.log(user);
+		});
+	},
+	render() {
+		return div({}, 
+	    	div({}, 'Enter the pincode.'), 
+	    	input({
+				type: 'text',
+				input: this.state.inputPinCode,
+				onChange: this.changeInputPincode,
+			}), 
+	        button({
+				onClick: this.submitPincode
+			}, 'Submit')
+    	);
 	}
 });
 
