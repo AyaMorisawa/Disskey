@@ -17,7 +17,9 @@
   },
   "dependencies": {
     "electron-prebuilt": "^0.30.4",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "request": "^2.61.0",
+    "request-promise": "^0.4.3"
   },
   "private": true
 }

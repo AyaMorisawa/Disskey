@@ -21,6 +21,9 @@
     },
     "github-electron/github-electron-main.d.ts": {
       "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
+    },
+    "request-promise/request-promise.d.ts": {
+      "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
     }
   }
 }

@@ -11,6 +11,7 @@
 	"files": [
 		"typings/bundle.d.ts",
 		"src/index.ts",
+		"src/misskey.ts",
 		"src/main/main.ts"
 	]
 }
