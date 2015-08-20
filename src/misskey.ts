@@ -6,6 +6,11 @@ import open = require('open');
 var baseUrl = 'https://api.misskey.xyz';
 
 export namespace sauth {
+	export interface IGetUserKeyResult {
+		userKey: string;
+		user: any;
+	}
+
 	export function getSessionKey(appKey: string): Promise<string> {
 		return request({
 			url: `${baseUrl}/sauth/get-authentication-session-key`,
@@ -24,7 +29,7 @@ export namespace sauth {
 		open(`${baseUrl}/authorize@${sessionKey}`);
 	}
 
-	export function getUserKey(appKey: string, sessionKey: string, pincode: string) {
+	export function getUserKey(appKey: string, sessionKey: string, pincode: string): Promise<IGetUserKeyResult> {
 		return request({
 			url: `${baseUrl}/sauth/get-user-key`,
 			method: 'GET',
