@@ -1,3 +1,5 @@
+/* The MIT License | Copyright (c) 2015 Aya */
+
 import * as request from 'request-promise';
 import open = require('open');
 
@@ -21,7 +23,7 @@ export namespace sauth {
 	export function openAuthorizePage(sessionKey: string) {
 		open(`${baseUrl}/authorize@${sessionKey}`);
 	}
-	
+
 	export function getUserKey(appKey: string, sessionKey: string, pincode: string) {
 		return request({
 			url: `${baseUrl}/sauth/get-user-key`,

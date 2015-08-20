@@ -3,7 +3,7 @@ import config from '../config';
 import { sauth } from '../misskey';
 
 sauth.getSessionKey(config.sauthAppKey).then(sessionKey => {
-	//sauth.openAuthorizePage(sessionKey);
+	// sauth.openAuthorizePage(sessionKey);
 	console.log(sessionKey);
 });
 /*
