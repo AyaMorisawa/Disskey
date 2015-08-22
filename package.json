@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "electron .",
-    "dtsm": "dtsm install --insight false",
+    "dtsm": "dtsm --insight false install",
     "build": "gulp build",
     "watch": "tsc -w",
     "lint": "gulp tslint",
