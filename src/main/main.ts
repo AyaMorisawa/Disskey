@@ -12,14 +12,10 @@ interface IAppState {
 
 var App = React.createClass({
 	componentDidMount() {
-		var existUserKey = false; // temporary
-		if (existUserKey) {
-		} else {
-			SAuth.createSession(config.sauthAppKey).then(session => {
-				this.setState({session});
-				session.openAuthorizePage();
-			});
-		}
+		SAuth.createSession(config.sauthAppKey).then(session => {
+			this.setState({session});
+			session.openAuthorizePage();
+		});
 	},
 	getInitialState(): IAppState {
 		return {
