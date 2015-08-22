@@ -116,30 +116,30 @@ export class StatusApi {
 		});
 	}
 
-	show(id: number) {
+	show(id: string) {
 		return this.token.callApiWithHeaders<any>('status/show', {
 			method: 'GET',
 			form: {
-				'status-id': id.toString()
+				'status-id': id
 			}
 		});
 	}
 
-	repost(id: number, text?: string) {
+	repost(id: string, text?: string) {
 		return this.token.callApiWithHeaders<any>('status/repost', {
 			method: 'POST',
 			form: {
-				'status-id': id.toString(),
+				'status-id': id,
 				text: typeof text === 'string' ? text : void 0
 			}
 		});
 	}
 
-	favorite(id: number) {
+	favorite(id: string) {
 		return this.token.callApiWithHeaders<any>('status/favorite', {
 			method: 'POST',
 			form: {
-				'status-id': id.toString()
+				'status-id': id
 			}
 		});
 	}
