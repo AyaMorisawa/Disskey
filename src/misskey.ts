@@ -122,4 +122,13 @@ export class StatusApi {
 			}
 		});
 	}
+	
+	repost(id: number, text?: string) {
+		return this.token.callApiWithHeaders<any>('status/repost', {
+			form: {
+				'status-id': id.toString(),
+				text: typeof text === 'string' ? text : undefined
+			}
+		});
+	}
 }
