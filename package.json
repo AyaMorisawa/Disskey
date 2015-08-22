@@ -18,7 +18,9 @@
     "gulp-dtsm": "9joneg/gulp-dtsm",
     "gulp-tslint": "^3.2.0",
     "gulp-typescript": "^2.8.1",
-    "typescript": "^1.5.3"
+    "tslint": "^2.4.3",
+    "typescript": "^1.5.3",
+    "typescript-require": "^0.2.9"
   },
   "dependencies": {
     "electron-prebuilt": "^0.30.4",
