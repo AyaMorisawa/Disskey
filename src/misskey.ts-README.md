@@ -33,6 +33,9 @@ token.callApiWithHeaders<any>('status/update', {
 });
 ```
 
+## Example
+* https://gist.github.com/AyaMorisawa/a1d0836beac75a6dc9e9
+
 ## Dependencies
 Please install by using npm.
 
