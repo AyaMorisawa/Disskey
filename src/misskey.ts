@@ -114,4 +114,12 @@ export class StatusApi {
 			}
 		});
 	}
+	
+	show(id: number) {
+		return this.token.callApiWithHeaders<any>('status/show', {
+			form: {
+				'status-id': id.toString()
+			}
+		});
+	}
 }
