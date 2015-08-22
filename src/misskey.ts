@@ -117,6 +117,7 @@ export class StatusApi {
 
 	show(id: number) {
 		return this.token.callApiWithHeaders<any>('status/show', {
+			method: 'GET',
 			form: {
 				'status-id': id.toString()
 			}
@@ -125,6 +126,7 @@ export class StatusApi {
 
 	repost(id: number, text?: string) {
 		return this.token.callApiWithHeaders<any>('status/repost', {
+			method: 'POST',
 			form: {
 				'status-id': id.toString(),
 				text: typeof text === 'string' ? text : undefined
@@ -134,6 +136,7 @@ export class StatusApi {
 
 	favorite(id: number) {
 		return this.token.callApiWithHeaders<any>('status/favorite', {
+			method: 'POST',
 			form: {
 				'status-id': id.toString()
 			}
