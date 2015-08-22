@@ -3,17 +3,17 @@
 import * as request from 'request-promise';
 import open = require('open');
 
+export var baseUrl = 'https://api.misskey.xyz';
+
+export function callApi<T>(endpoint: string, options: request.Options = {}): Promise<T> {
+	options.url = `${baseUrl}/${endpoint}`;
+	options.json = true;
+
+	return request(options);
+}
+
 export namespace SAuth {
 	type User = any;
-
-	export var baseUrl = 'https://api.misskey.xyz';
-
-	export function callApi<T>(endpoint: string, options: request.Options = {}): Promise<T> {
-		options.url = `${baseUrl}/${endpoint}`;
-		options.json = true;
-
-		return request(options);
-	}
 
 	export class Session {
 		appKey: string;
