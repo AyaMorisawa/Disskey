@@ -109,7 +109,7 @@ export class StatusApi {
 		return this.token.callApiWithHeaders<any>('status/update', {
 			method: 'POST',
 			form: {
-				text: text,
+				text,
 				'in-reply-to-status-id': typeof inReplyToStatusId === 'number' ? inReplyToStatusId.toString() : undefined
 			}
 		});
