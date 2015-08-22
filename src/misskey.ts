@@ -8,11 +8,11 @@ export namespace SAuth {
 
 	export var baseUrl = 'https://api.misskey.xyz';
 
-	export function callApi<T>(endpoint: string, option: request.Options = {}): Promise<T> {
-		option.url = `${baseUrl}/${endpoint}`;
-		option.json = true;
+	export function callApi<T>(endpoint: string, options: request.Options = {}): Promise<T> {
+		options.url = `${baseUrl}/${endpoint}`;
+		options.json = true;
 
-		return request(option);
+		return request(options);
 	}
 
 	export class Session {
