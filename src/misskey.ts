@@ -75,4 +75,10 @@ export class Token {
 		this.appKey = appKey;
 		this.userKey = userKey;
 	}
+	
+	callApiWithHeader<T>(endpoint: string, options: request.Options) {
+		options.headers['sauth-app-key'] = this.appKey;
+		options.headers['sauth-user-key'] = this.userKey;
+		return callApi<T>(endpoint, options);
+	}
 }
