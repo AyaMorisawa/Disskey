@@ -5,6 +5,8 @@ Disskey
 
 Misskey client for desktop
 
+This project is being developed and is an experiment more than anything else now.
+
 ## Build and run Disskey
 
 1. `git clone git://github.com/AyaMorisawa/Disskey.git`
