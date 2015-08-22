@@ -105,12 +105,12 @@ export class StatusApi {
 		});
 	}
 
-	update(options: {text: string, inReplyToStatusId?: number}) {
+	update(text: string, inReplyToStatusId?: number) {
 		return this.token.callApiWithHeaders<any>('status/update', {
 			method: 'POST',
 			form: {
-				text: options.text,
-				'in-reply-to-status-id': typeof options.inReplyToStatusId === 'number' ? options.inReplyToStatusId.toString() : undefined
+				text: text,
+				'in-reply-to-status-id': typeof inReplyToStatusId === 'number' ? inReplyToStatusId.toString() : undefined
 			}
 		});
 	}
