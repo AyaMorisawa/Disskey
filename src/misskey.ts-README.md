@@ -1,7 +1,7 @@
 misskey.ts
 ====
 
-misskey.ts is a Misskey library for Node.js, written in TypeScript.
+misskey.ts is a Misskey library for Node.js, written in TypeScript, developed for Disskey.
 
 ## Usage
 ```ts
