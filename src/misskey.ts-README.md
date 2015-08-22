@@ -7,7 +7,7 @@ misskey.ts is a Misskey library for Node.js, written in TypeScript.
 
 ### Importing
 ```ts
-import { SAuth } from 'misskey';
+import { SAuth } from 'path/to/misskey';
 ```
 
 ### Create session
