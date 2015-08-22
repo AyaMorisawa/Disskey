@@ -114,7 +114,7 @@ export class StatusApi {
 			}
 		});
 	}
-	
+
 	show(id: number) {
 		return this.token.callApiWithHeaders<any>('status/show', {
 			form: {
@@ -122,7 +122,7 @@ export class StatusApi {
 			}
 		});
 	}
-	
+
 	repost(id: number, text?: string) {
 		return this.token.callApiWithHeaders<any>('status/repost', {
 			form: {
@@ -131,7 +131,7 @@ export class StatusApi {
 			}
 		});
 	}
-	
+
 	favorite(id: number) {
 		return this.token.callApiWithHeaders<any>('status/favorite', {
 			form: {
