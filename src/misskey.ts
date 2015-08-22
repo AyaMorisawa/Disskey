@@ -8,7 +8,6 @@ export var baseUrl = 'https://api.misskey.xyz';
 export function callApi<T>(endpoint: string, options: request.Options = {}): Promise<T> {
 	options.url = `${baseUrl}/${endpoint}`;
 	options.json = true;
-
 	return request(options);
 }
 
