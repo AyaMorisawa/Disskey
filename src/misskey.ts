@@ -11,14 +11,16 @@ export namespace sauth {
 	export class Session {
 		appKey: string;
 		sessionKey: string;
+		authorizePageUrl: string;
 
 		constructor(appKey: string, sessionKey: string) {
 			this.appKey = appKey;
 			this.sessionKey = sessionKey;
+			this.authorizePageUrl = `${baseUrl}/authorize@${sessionKey}`;
 		}
 
 		openAuthorizePage() {
-			open(`${baseUrl}/authorize@${this.sessionKey}`);
+			open(this.authorizePageUrl);
 		}
 
 		getUserKey(pincode: string): Promise<{userKey: string, user: User}> {
