@@ -7,7 +7,8 @@
     "start": "electron .",
     "build": "tsc",
     "watch": "tsc -w",
-    "lint": "tslint -c tslint.json src/**/*.ts"
+    "lint": "tslint -c tslint.json src/**/*.ts",
+    "test": "npm run build & npm run lint"
   },
   "license": "MIT",
   "devDependencies": {
