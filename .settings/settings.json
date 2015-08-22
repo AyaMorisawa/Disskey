@@ -5,5 +5,7 @@
 		"node_modules": true,
 		"typings": true,
 		"src/**/*.js": true
-	}
+	},
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false
 }
