@@ -11,9 +11,9 @@ export function callApi<T>(endpoint: string, options: request.Options = {}): Pro
 	return request(options);
 }
 
-export namespace SAuth {
-	type User = any;
+export type User = any;
 
+export namespace SAuth {
 	export class Session {
 		appKey: string;
 		sessionKey: string;
