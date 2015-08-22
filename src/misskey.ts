@@ -16,7 +16,7 @@ export namespace sauth {
 		constructor(appKey: string, sessionKey: string) {
 			this.appKey = appKey;
 			this.sessionKey = sessionKey;
-			this.authorizePageUrl = `${baseUrl}/authorize@${sessionKey}`;
+			this.authorizePageUrl = `${baseUrl}/authorize@${encodeURIComponent(sessionKey)}`;
 		}
 
 		openAuthorizePage() {
