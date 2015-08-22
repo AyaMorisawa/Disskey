@@ -11,7 +11,7 @@ export namespace SAuth {
 	export function callApi<T>(endpoint: string, option: request.Options = {}): Promise<T> {
 		option.url = `${baseUrl}/${endpoint}`;
 		option.json = true;
-		
+
 		return request(option);
 	}
 
