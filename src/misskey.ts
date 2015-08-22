@@ -97,7 +97,7 @@ export class StatusApi {
 		return this.token.callApiWithHeaders<any>('status/timeline', {
 			method: 'GET',
 			form: {
-				'since-cursor': typeof options.sinceCursor === 'number' ? options.sinceCursor.toString() : void 0
+				'since-cursor': typeof options.sinceCursor === 'number' ? options.sinceCursor.toString() : void 0,
 				'max-cursor': typeof options.maxCursor === 'number' ? options.maxCursor.toString() : void 0,
 				count: typeof options.count === 'number' ? options.count.toString() : void 0
 			}
