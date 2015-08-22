@@ -76,7 +76,7 @@ export class Token {
 	}
 
 	callApiWithHeaders<T>(endpoint: string, options: request.Options = {}) {
-		if (typeof options.headers !== "object" || options.headers === null) {
+		if (typeof options.headers !== 'object' || options.headers === null) {
 			options.headers = {};
 		}
 		options.headers['sauth-app-key'] = this.appKey;
