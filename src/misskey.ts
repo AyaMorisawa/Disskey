@@ -13,6 +13,25 @@ export namespace SAuth {
 		sessionKey: string;
 		authorizePageUrl: string;
 
+		static createSessionKey(appKey: string): Promise<string> {
+			return request({
+				url: `${baseUrl}/sauth/get-authentication-session-key`,
+				method: 'GET',
+				headers: {
+					'sauth-app-key': appKey
+				},
+				json: true,
+				transform: (data: { authenticationSessionKey: string }): string => {
+					return data.authenticationSessionKey;
+				}
+			});
+		}
+
+		static create(appKey: string): Promise<Session> {
+			return Session.createSessionKey(appKey)
+				.then(sessionKey => new Session(appKey, sessionKey));
+		}
+
 		constructor(appKey: string, sessionKey: string) {
 			this.appKey = appKey;
 			this.sessionKey = sessionKey;
@@ -37,19 +56,5 @@ export namespace SAuth {
 				json: true
 			});
 		}
-	}
-
-	export function createSession(appKey: string): Promise<Session> {
-		return request({
-			url: `${baseUrl}/sauth/get-authentication-session-key`,
-			method: 'GET',
-			headers: {
-				'sauth-app-key': appKey
-			},
-			json: true,
-			transform: (data: { authenticationSessionKey: string }): any => {
-				return new Session(appKey, data.authenticationSessionKey);
-			}
-		});
 	}
 }

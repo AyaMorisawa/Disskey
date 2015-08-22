@@ -12,7 +12,7 @@ interface IAppState {
 
 var App = React.createClass({
 	componentDidMount() {
-		SAuth.createSession(config.sauthAppKey).then(session => {
+		SAuth.Session.create(config.sauthAppKey).then(session => {
 			this.setState({session});
 			session.openAuthorizePage();
 		});
