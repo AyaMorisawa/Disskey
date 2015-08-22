@@ -5,14 +5,18 @@
   "main": "src/index.js",
   "scripts": {
     "start": "electron .",
-    "build": "tsc",
+    "build": "gulp build",
     "watch": "tsc -w",
-    "lint": "tslint -c tslint.json src/**/*.ts",
-    "test": "npm run build & npm run lint"
+    "lint": "gulp tslint",
+    "test": "gulp test"
   },
   "license": "MIT",
   "devDependencies": {
     "dtsm": "^0.10.3",
+    "gulp": "^3.9.0",
+    "gulp-dtsm": "9joneg/gulp-dtsm",
+    "gulp-tslint": "^3.2.0",
+    "gulp-typescript": "^2.8.1",
     "tslint": "^2.4.2",
     "typescript": "^1.5.3"
   },
