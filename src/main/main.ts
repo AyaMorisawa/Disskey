@@ -1,6 +1,6 @@
 import * as React from 'react';
 import config from '../config';
-import { SAuth } from '../misskey';
+import { SAuth, Token } from '../misskey';
 import Auth from './auth';
 
 var { div } = React.DOM;
@@ -38,7 +38,7 @@ class App extends React.Component<{}, IAppState> {
 	submitPincode() {
 		var session = this.state.session;
 		if (session != null) {
-			SAuth.Token.create(session, this.state.pincode).then(token => {
+			Token.create(session, this.state.pincode).then(token => {
 				this.setState({
 					userKey: token.userKey,
 					existUserKey: true

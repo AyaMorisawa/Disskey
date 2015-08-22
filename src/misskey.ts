@@ -61,18 +61,18 @@ export namespace SAuth {
 			});
 		}
 	}
+}
 
-	export class Token {
-		appKey: string;
-		userKey: string;
+export class Token {
+	appKey: string;
+	userKey: string;
 
-		static create(session: Session, pincode: string) {
-			return session.getUserKey(pincode).then(userKey => new Token(session.appKey, userKey));
-		}
+	static create(session: SAuth.Session, pincode: string) {
+		return session.getUserKey(pincode).then(userKey => new Token(session.appKey, userKey));
+	}
 
-		constructor(appKey: string, userKey: string) {
-			this.appKey = appKey;
-			this.userKey = userKey;
-		}
+	constructor(appKey: string, userKey: string) {
+		this.appKey = appKey;
+		this.userKey = userKey;
 	}
 }

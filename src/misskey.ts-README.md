@@ -5,10 +5,10 @@ misskey.ts is a Misskey library for Node.js, written in TypeScript.
 
 ## Usage
 ```ts
-import { SAuth } from 'path/to/misskey';
+import { SAuth, Token } from 'path/to/misskey';
 
 SAuth.Session.create('app-key')
-	.then(session => SAuth.Token.create(session, 'pincode'))
+	.then(session => Token.create(session, 'pincode'))
 	.then(token => console.log(token.userKey));
 ```
 
