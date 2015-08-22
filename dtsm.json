@@ -27,15 +27,6 @@
     },
     "open/open.d.ts": {
       "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
-    },
-    "gulp/gulp.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
-    },
-    "gulp-typescript/gulp-typescript.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
-    },
-    "gulp-tslint/gulp-tslint.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
     }
   }
 }
