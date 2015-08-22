@@ -48,7 +48,7 @@ export namespace SAuth {
 		}
 
 		getUserKey(pincode: string) {
-			return callApi<{userKey: string, user: User}>('sauth/get-user-key', {
+			return callApi<string>('sauth/get-user-key', {
 				method: 'GET',
 				headers: {
 					'sauth-app-key': this.appKey
@@ -56,8 +56,23 @@ export namespace SAuth {
 				form: {
 					'authentication-session-key': this.sessionKey,
 					'pin-code': pincode
-				}
+				},
+				transform: (data: { userKey: string }): string => data.userKey
 			});
+		}
+	}
+
+	export class Token {
+		appKey: string;
+		userKey: string;
+
+		static create(session: Session, pincode: string) {
+			return session.getUserKey(pincode).then(userKey => new Token(session.appKey, userKey));
+		}
+
+		constructor(appKey: string, userKey: string) {
+			this.appKey = appKey;
+			this.userKey = userKey;
 		}
 	}
 }

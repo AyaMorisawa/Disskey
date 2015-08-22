@@ -38,19 +38,23 @@ class App extends React.Component<{}, IAppState> {
 	submitPincode() {
 		var session = this.state.session;
 		if (session != null) {
-			this.state.session.getUserKey(this.state.pincode).then(({userKey, user}) => {
-				this.setState({userKey, existUserKey: true});
-				console.log(userKey);
-				console.log(user);
+			SAuth.Token.create(session, this.state.pincode).then(token => {
+				this.setState({
+					userKey: token.userKey,
+					existUserKey: true
+				});
+				console.log(token.userKey);
 			});
 		}
 	}
 
 	render() {
-		return this.state.existUserKey ? React.createElement(Auth, {
-			onSubmitPincode: <React.FormEventHandler>this.submitPincode.bind(this),
-			onChangePincode: <React.MouseEventHandler>this.changePincode.bind(this)
-		}) : div({}, `Your user-key: ${this.state.userKey}`);
+		return this.state.existUserKey
+			? div({}, `Your user-key: ${this.state.userKey}`)
+			: React.createElement(Auth, {
+				onSubmitPincode: <React.FormEventHandler>this.submitPincode.bind(this),
+				onChangePincode: <React.MouseEventHandler>this.changePincode.bind(this)
+			});
 	}
 }
 

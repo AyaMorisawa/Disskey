@@ -4,27 +4,12 @@ misskey.ts
 misskey.ts is a Misskey library for Node.js, written in TypeScript.
 
 ## Usage
-
-### Importing
 ```ts
 import { SAuth } from 'path/to/misskey';
-```
 
-### Create session
-```ts
-SAuth.Session.create('appKey').then(session => {
-});
-```
-
-### Open authorize page
-```ts
-session.openAuthorizePage();
-```
-
-### Get user-key
-```ts
-session.getUserKey('pincode').then(({userKey, user}) => {
-});
+SAuth.Session.create('app-key')
+	.then(session => SAuth.Token.create(session, 'pincode'))
+	.then(token => console.log(token.userKey));
 ```
 
 ## Dependencies
