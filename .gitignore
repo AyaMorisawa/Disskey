@@ -2,3 +2,4 @@
 /src/**/*.js
 /typings
 npm-debug.log
+/tmp
