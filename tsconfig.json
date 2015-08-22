@@ -13,6 +13,7 @@
 		"src/index.ts",
 		"src/config.ts",
 		"src/misskey.ts",
-		"src/main/main.ts"
+		"src/main/main.ts",
+		"src/main/auth.ts"
 	]
 }
