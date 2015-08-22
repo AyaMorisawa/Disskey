@@ -8,19 +8,24 @@ export namespace SAuth {
 
 	export var baseUrl = 'https://api.misskey.xyz';
 
+	export function callApi<T>(endpoint: string, option: request.Options = {}): Promise<T> {
+		option.url = `${baseUrl}/${endpoint}`;
+		option.json = true;
+		
+		return request(option);
+	}
+
 	export class Session {
 		appKey: string;
 		sessionKey: string;
 		authorizePageUrl: string;
 
-		static createSessionKey(appKey: string): Promise<string> {
-			return request({
-				url: `${baseUrl}/sauth/get-authentication-session-key`,
+		static createSessionKey(appKey: string) {
+			return callApi<string>('sauth/get-authentication-session-key', {
 				method: 'GET',
 				headers: {
 					'sauth-app-key': appKey
 				},
-				json: true,
 				transform: (data: { authenticationSessionKey: string }): string => {
 					return data.authenticationSessionKey;
 				}
@@ -42,9 +47,8 @@ export namespace SAuth {
 			open(this.authorizePageUrl);
 		}
 
-		getUserKey(pincode: string): Promise<{userKey: string, user: User}> {
-			return request({
-				url: `${baseUrl}/sauth/get-user-key`,
+		getUserKey(pincode: string) {
+			return callApi<{userKey: string, user: User}>('sauth/get-user-key', {
 				method: 'GET',
 				headers: {
 					'sauth-app-key': this.appKey
@@ -52,8 +56,7 @@ export namespace SAuth {
 				form: {
 					'authentication-session-key': this.sessionKey,
 					'pin-code': pincode
-				},
-				json: true
+				}
 			});
 		}
 	}
