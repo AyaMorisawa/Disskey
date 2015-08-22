@@ -78,7 +78,9 @@ export class Token {
 	}
 
 	callApiWithHeaders<T>(endpoint: string, options: request.Options = {}) {
-		if (options.headers === void 0) options.headers = {};
+		if (options.headers === void 0) {
+			options.headers = {};
+		}
 
 		options.headers['sauth-app-key'] = this.appKey;
 		options.headers['sauth-user-key'] = this.userKey;
