@@ -3,14 +3,8 @@
 import { task, src, dest } from 'gulp';
 import * as ts from 'gulp-typescript';
 import * as tslint from 'gulp-tslint';
-var dtsm = require('gulp-dtsm');
 
 var tsProject = ts.createProject('tsconfig.json');
-
-task('dtsm', function() {
-	return src('./dtsm.json')
-		.pipe(dtsm());
-});
 
 task('build', function() {
 	var tsResult = tsProject.src()
