@@ -131,4 +131,12 @@ export class StatusApi {
 			}
 		});
 	}
+	
+	favorite(id: number) {
+		return this.token.callApiWithHeaders<any>('status/favorite', {
+			form: {
+				'status-id': id.toString()
+			}
+		});
+	}
 }
