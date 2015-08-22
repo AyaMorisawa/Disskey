@@ -5,7 +5,7 @@ Disskey
 
 Misskey client for desktop
 
-## How to use
+## Build and run Disskey
 
 1. `git clone git://github.com/AyaMorisawa/Disskey.git`
 2. `cd Disskey`
@@ -13,3 +13,7 @@ Misskey client for desktop
 4. `dtsm install`
 5. `npm run build`
 6. `npm start`
+
+## License
+Disskey is licensed under the MIT license.
+See [LICENSE](LICENSE).
