@@ -4,7 +4,7 @@
 		"**/.DS_Store": true,
 		"node_modules": true,
 		"typings": true,
-		"src/**/*.js": true
+		"src/**/*.js": true,
 		"tmp": true
 	},
 	"editor.tabSize": 4,
