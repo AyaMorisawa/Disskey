@@ -4,10 +4,7 @@ import * as request from 'request-promise';
 import open = require('open');
 
 export namespace sauth {
-	export interface IGetUserKeyResult {
-		userKey: string;
-		user: any;
-	}
+	type User = any;
 
 	export var baseUrl = 'https://api.misskey.xyz';
 
@@ -24,7 +21,7 @@ export namespace sauth {
 			open(`${baseUrl}/authorize@${this.sessionKey}`);
 		}
 
-		getUserKey(pincode: string): Promise<IGetUserKeyResult> {
+		getUserKey(pincode: string): Promise<{userKey: string, user: User}> {
 			return request({
 				url: `${baseUrl}/sauth/get-user-key`,
 				method: 'GET',
