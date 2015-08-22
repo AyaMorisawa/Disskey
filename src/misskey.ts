@@ -65,6 +65,7 @@ export namespace SAuth {
 export class Token {
 	appKey: string;
 	userKey: string;
+	status: StatusApi;
 
 	static create(session: SAuth.Session, pincode: string) {
 		return session.getUserKey(pincode).then(userKey => new Token(session.appKey, userKey));
@@ -73,6 +74,7 @@ export class Token {
 	constructor(appKey: string, userKey: string) {
 		this.appKey = appKey;
 		this.userKey = userKey;
+		this.status = new StatusApi(this);
 	}
 
 	callApiWithHeaders<T>(endpoint: string, options: request.Options = {}) {
@@ -82,5 +84,23 @@ export class Token {
 		options.headers['sauth-app-key'] = this.appKey;
 		options.headers['sauth-user-key'] = this.userKey;
 		return callApi<T>(endpoint, options);
+	}
+}
+
+export class StatusApi {
+	token: Token;
+
+	constructor(token: Token) {
+		this.token = token;
+	}
+
+	getTimeline(options: {sinceCursor?: number, maxCursor?: number, count?: number} = {}) {
+		return this.token.callApiWithHeaders<any>('status/timeline', {
+			form: {
+				'since-cursor': typeof options.sinceCursor === 'number' ? options.sinceCursor.toString() : undefined,
+				'max-cursor': typeof options.maxCursor === 'number' ? options.maxCursor.toString() : undefined,
+				count: typeof options.count === 'number' ? options.count.toString() : undefined
+			}
+		});
 	}
 }

@@ -13,13 +13,7 @@ SAuth.Session.create('app-key')
 
 function doSomething(token: Token) {
 	console.log(token.userKey);
-	
-	token.callApiWithHeaders<any>('status/update', {
-		method: 'POST',
-		form: {
-			text: 'test'
-		}
-	});
+	token.status.getTimeline().then(posts => console.log(posts));
 }
 ```
 
@@ -27,6 +21,16 @@ function doSomething(token: Token) {
 ```ts
 var token = new Token('app-key', 'user-key');
 doSomething(token);
+```
+
+### Low-level function
+```ts
+token.callApiWithHeaders<any>('status/update', {
+	method: 'POST',
+	form: {
+		text: 'test'
+	}
+});
 ```
 
 ## Dependencies
