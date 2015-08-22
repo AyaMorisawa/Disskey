@@ -103,4 +103,13 @@ export class StatusApi {
 			}
 		});
 	}
+
+	update(options: {text: string, inReplyToStatusId?: number}) {
+		return this.token.callApiWithHeaders<any>('status/update', {
+			form: {
+				text: options.text,
+				'in-reply-to-status-id': typeof options.inReplyToStatusId === 'number' ? options.inReplyToStatusId.toString() : undefined
+			}
+		});
+	}
 }
