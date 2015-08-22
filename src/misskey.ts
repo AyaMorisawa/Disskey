@@ -78,9 +78,8 @@ export class Token {
 	}
 
 	callApiWithHeaders<T>(endpoint: string, options: request.Options = {}) {
-		if (typeof options.headers !== 'object' || options.headers === null) {
-			options.headers = {};
-		}
+		if (options.headers === void 0) options.headers = {};
+
 		options.headers['sauth-app-key'] = this.appKey;
 		options.headers['sauth-user-key'] = this.userKey;
 		return callApi<T>(endpoint, options);
@@ -98,9 +97,9 @@ export class StatusApi {
 		return this.token.callApiWithHeaders<any>('status/timeline', {
 			method: 'GET',
 			form: {
-				'since-cursor': typeof options.sinceCursor === 'number' ? options.sinceCursor.toString() : undefined,
-				'max-cursor': typeof options.maxCursor === 'number' ? options.maxCursor.toString() : undefined,
-				count: typeof options.count === 'number' ? options.count.toString() : undefined
+				'since-cursor': typeof options.sinceCursor === 'number' ? options.sinceCursor.toString() : void 0
+				'max-cursor': typeof options.maxCursor === 'number' ? options.maxCursor.toString() : void 0,
+				count: typeof options.count === 'number' ? options.count.toString() : void 0
 			}
 		});
 	}
@@ -110,7 +109,7 @@ export class StatusApi {
 			method: 'POST',
 			form: {
 				text,
-				'in-reply-to-status-id': typeof inReplyToStatusId === 'number' ? inReplyToStatusId.toString() : undefined
+				'in-reply-to-status-id': typeof inReplyToStatusId === 'number' ? inReplyToStatusId.toString() : void 0
 			}
 		});
 	}
@@ -129,7 +128,7 @@ export class StatusApi {
 			method: 'POST',
 			form: {
 				'status-id': id.toString(),
-				text: typeof text === 'string' ? text : undefined
+				text: typeof text === 'string' ? text : void 0
 			}
 		});
 	}
