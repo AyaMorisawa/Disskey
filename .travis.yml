@@ -1,5 +1,7 @@
 language: node_js
 node_js:
   - "0.12"
+install:
+  - "npm install dtsm gulp gulp-dtsm gulp-tslint gulp-typescript tslint typescript"
 before_script:
   - "npm run dtsm"
