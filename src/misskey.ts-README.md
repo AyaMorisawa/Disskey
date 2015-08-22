@@ -23,6 +23,12 @@ function doSomething(token: Token) {
 }
 ```
 
+### From user-key
+```ts
+var token = new Token('app-key', 'user-key');
+doSomething(token);
+```
+
 ## Dependencies
 Please install by using npm.
 
