@@ -9,7 +9,18 @@ import { SAuth, Token } from 'path/to/misskey';
 
 SAuth.Session.create('app-key')
 	.then(session => Token.create(session, 'pincode'))
-	.then(token => console.log(token.userKey));
+	.then(doSomething);
+
+function doSomething(token: Token) {
+	console.log(token.userKey);
+	
+	token.callApiWithHeader<any>('status/update', {
+		method: 'POST',
+		form: {
+			text: 'test'
+		}
+	});
+}
 ```
 
 ## Dependencies
