@@ -16,21 +16,21 @@ class App extends React.Component<{}, IAppState> {
 	userKey: string;
 	pincode: string;
 	session: SAuth.Session;
-	
+
 	state: IAppState = {
 		userKey: null,
 		pincode: '',
 		session: null,
 		existUserKey: false
 	};
-	
+
 	componentDidMount() {
 		SAuth.Session.create(config.sauthAppKey).then(session => {
 			this.setState({session});
 			session.openAuthorizePage();
 		});
 	}
-	
+
 	changePincode(e: any) {
 		this.setState({pincode: e.target.value});
 	}
