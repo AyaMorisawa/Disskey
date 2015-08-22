@@ -96,6 +96,7 @@ export class StatusApi {
 
 	getTimeline(options: {sinceCursor?: number, maxCursor?: number, count?: number} = {}) {
 		return this.token.callApiWithHeaders<any>('status/timeline', {
+			method: 'GET',
 			form: {
 				'since-cursor': typeof options.sinceCursor === 'number' ? options.sinceCursor.toString() : undefined,
 				'max-cursor': typeof options.maxCursor === 'number' ? options.maxCursor.toString() : undefined,
@@ -106,6 +107,7 @@ export class StatusApi {
 
 	update(options: {text: string, inReplyToStatusId?: number}) {
 		return this.token.callApiWithHeaders<any>('status/update', {
+			method: 'POST',
 			form: {
 				text: options.text,
 				'in-reply-to-status-id': typeof options.inReplyToStatusId === 'number' ? options.inReplyToStatusId.toString() : undefined
