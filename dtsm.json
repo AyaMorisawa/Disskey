@@ -3,10 +3,6 @@
     {
       "url": "https://github.com/borisyankov/DefinitelyTyped.git",
       "ref": "master"
-    },
-    {
-      "url": "https://github.com/AyaMorisawa/node-misskey.git",
-      "ref": "master"
     }
   ],
   "path": "typings",
@@ -18,19 +14,19 @@
   },
   "dependencies": {
     "node/node.d.ts": {
-      "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
+      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
     },
     "react/react.d.ts": {
-      "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
+      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
     },
     "github-electron/github-electron-main.d.ts": {
-      "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
+      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
     },
     "request-promise/request-promise.d.ts": {
-      "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
+      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
     },
     "open/open.d.ts": {
-      "ref": "38fb591c6eba840e0b53d1110302b8e4fb04651c"
+      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
     }
   }
 }
