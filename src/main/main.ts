@@ -1,6 +1,6 @@
 import * as React from 'react';
 import config from '../config';
-import { sauth } from '../misskey';
+import { SAuth } from '../misskey';
 
 var { div, input, button } = React.DOM;
 
@@ -15,7 +15,7 @@ var App = React.createClass({
 		var existUserKey = false; // temporary
 		if (existUserKey) {
 		} else {
-			sauth.createSession(config.sauthAppKey).then(session => {
+			SAuth.createSession(config.sauthAppKey).then(session => {
 				this.setState({session});
 				session.openAuthorizePage();
 			});
@@ -33,7 +33,7 @@ var App = React.createClass({
 	},
 	submitPincode() {
 		var pincode: string = this.state.inputPincode;
-		var session: sauth.Session = this.state.session;
+		var session: SAuth.Session = this.state.session;
 		session.getUserKey(pincode).then(({userKey, user}) => {
 			console.log(userKey);
 			console.log(user);

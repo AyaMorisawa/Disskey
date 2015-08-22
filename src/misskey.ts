@@ -3,7 +3,7 @@
 import * as request from 'request-promise';
 import open = require('open');
 
-export namespace sauth {
+export namespace SAuth {
 	type User = any;
 
 	export var baseUrl = 'https://api.misskey.xyz';
