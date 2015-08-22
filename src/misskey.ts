@@ -75,7 +75,7 @@ export class Token {
 		this.userKey = userKey;
 	}
 
-	callApiWithHeader<T>(endpoint: string, options: request.Options = {}) {
+	callApiWithHeaders<T>(endpoint: string, options: request.Options = {}) {
 		if (typeof options.headers !== "object" || options.headers === null) {
 			options.headers = {};
 		}

@@ -14,7 +14,7 @@ SAuth.Session.create('app-key')
 function doSomething(token: Token) {
 	console.log(token.userKey);
 	
-	token.callApiWithHeader<any>('status/update', {
+	token.callApiWithHeaders<any>('status/update', {
 		method: 'POST',
 		form: {
 			text: 'test'
