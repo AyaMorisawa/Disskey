@@ -43,7 +43,8 @@ class App extends React.Component<{}, IAppState> {
 					userKey: token.userKey,
 					existUserKey: true
 				});
-				console.log(token.userKey);
+				console.log(token.userKey); // debug
+				(<any>window).token = token; // debug
 			});
 		}
 	}
