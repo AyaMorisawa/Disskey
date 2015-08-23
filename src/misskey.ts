@@ -151,7 +151,7 @@ export class StatusApi extends MisskeyApi {
 
 export class UsersApi extends MisskeyApi {
 	showById(id: string) {
-		return this.token.callApiWithHeaders<any>('users/show', {
+		return this.token.callApiWithHeaders<IUser>('users/show', {
 			method: 'GET',
 			form: {
 				'user-id': id
@@ -160,7 +160,7 @@ export class UsersApi extends MisskeyApi {
 	}
 
 	showByScreenName(screenName: string) {
-		return this.token.callApiWithHeaders<any>('users/show', {
+		return this.token.callApiWithHeaders<IUser>('users/show', {
 			method: 'GET',
 			form: {
 				'screen-name': screenName
@@ -169,7 +169,7 @@ export class UsersApi extends MisskeyApi {
 	}
 
 	follow(id: string) {
-		return this.token.callApiWithHeaders<any>('users/follow', {
+		return this.token.callApiWithHeaders<IUser>('users/follow', {
 			method: 'POST',
 			form: {
 				'user-id': id
@@ -178,11 +178,39 @@ export class UsersApi extends MisskeyApi {
 	}
 
 	unfollow(id: string) {
-		return this.token.callApiWithHeaders<any>('users/unfollow', {
+		return this.token.callApiWithHeaders<IUser>('users/unfollow', {
 			method: 'DELETE',
 			form: {
 				'user-id': id
 			}
 		});
 	}
+}
+
+interface IUser {
+	bannerImageUrl: string;
+	bio: string;
+	color: string;
+	comment: string;
+	createdAt: string;
+	followersCount: number;
+	followingsCount: number;
+	iconImageUrl: string;
+	id: string;
+	isDisplayNotFollowUserMention: boolean;
+	isPlus: boolean;
+	isSuspended: boolean;
+	isVerified: boolean;
+	lang: string;
+	links: string[];
+	location: string;
+	mobileHeaderDesignId: string;
+	name: string;
+	screenName: string;
+	screenNameLower: string;
+	statusFavoritesCount: number;
+	statusesCount: number;
+	tags: string[];
+	url: string;
+	wallpaperImageUrl: string;
 }

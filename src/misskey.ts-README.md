@@ -55,10 +55,10 @@ token.callApiWithHeaders<any>('status/update', {
 * `token.status.favorite(id: string): Promise<any>`
 
 ### Users API
-* `token.users.showById(id: string): Promise<any>`
-* `token.users.showByScreenName(screenName: string): Promise<any>`
-* `token.users.follow(id: string): Promise<any>`
-* `token.users.unfollow(id: string): Promise<any>`
+* `token.users.showById(id: string): Promise<IUser>`
+* `token.users.showByScreenName(screenName: string): Promise<IUser>`
+* `token.users.follow(id: string): Promise<IUser>`
+* `token.users.unfollow(id: string): Promise<IUser>`
 
 ## Dependencies
 ### npm packages
