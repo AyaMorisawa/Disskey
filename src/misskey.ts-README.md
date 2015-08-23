@@ -48,11 +48,11 @@ token.callApiWithHeaders<any>('status/update', {
 
 ## Supported API
 ### Status API
-* `token.status.getTimeline(options?: {sinceCursor?: number, maxCursor?: number, count?: number}): Promise<any>`
-* `token.status.update(text: string, inReplyToStatusId?: number): Promise<any>`
-* `token.status.show(id: string): Promise<any>`
-* `token.status.repost(id: string, text?: string): Promise<any>`
-* `token.status.favorite(id: string): Promise<any>`
+* `token.status.getTimeline(options?: {sinceCursor?: number, maxCursor?: number, count?: number}): Promise<IStatus>`
+* `token.status.update(text: string, inReplyToStatusId?: number): Promise<IStatus>`
+* `token.status.show(id: string): Promise<IStatus>`
+* `token.status.repost(id: string, text?: string): Promise<IStatus>`
+* `token.status.favorite(id: string): Promise<IStatus>`
 
 ### Users API
 * `token.users.showById(id: string): Promise<IUser>`
