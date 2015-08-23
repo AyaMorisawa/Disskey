@@ -23,11 +23,10 @@ import { SAuth, Token } from 'path/to/misskey';
 
 SAuth.Session.create('app-key')
 	.then(session => Token.create(session, 'pincode'))
-	.then(doSomething);
+	.then(doSomething)
+	.catch(error => console.log('Error: ', error));
 
 function doSomething(token: Token) {
-	console.log(token.userKey);
-	token.status.getTimeline().then(posts => console.log(posts));
 	token.status.update('Hello, world!');
 }
 ```
