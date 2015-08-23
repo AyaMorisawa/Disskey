@@ -42,7 +42,7 @@ doSomething(token);
 token.callApiWithHeaders<any>('status/update', {
 	method: 'POST',
 	form: {
-		text: 'test'
+		text: 'Hello, world!'
 	}
 });
 ```
