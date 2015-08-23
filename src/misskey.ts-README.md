@@ -76,4 +76,5 @@ token.callApiWithHeaders<any>('status/update', {
 * request-promise
 
 ## License
-misskey.ts is licensed under the MIT License. See [LICENSE](../LICENSE)
+misskey.ts is licensed under the MIT License.
+See [LICENSE](../LICENSE).
