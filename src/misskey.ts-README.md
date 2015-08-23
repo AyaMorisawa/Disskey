@@ -6,7 +6,7 @@ misskey.ts
 ## Features
 * Cross platform
 * Modern way to use Misskey API with **Promise**
-* Developed and maintained by a Misskey committer.
+* Developed and maintained by a Misskey committer
 
 ## Download
 ```
