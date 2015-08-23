@@ -88,13 +88,15 @@ export class Token {
 	}
 }
 
-export class StatusApi {
+export class MisskeyApi {
 	token: Token;
 
 	constructor(token: Token) {
 		this.token = token;
 	}
+}
 
+export class StatusApi extends MisskeyApi {
 	getTimeline(options: {sinceCursor?: number, maxCursor?: number, count?: number} = {}) {
 		return this.token.callApiWithHeaders<any>('status/timeline', {
 			method: 'GET',
