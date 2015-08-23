@@ -45,6 +45,7 @@ token.callApiWithHeaders<any>('status/update', {
 * https://gist.github.com/AyaMorisawa/a1d0836beac75a6dc9e9
 
 ## Supported API
+### Status API
 * `token.status.getTimeline(options?: {sinceCursor?: number, maxCursor?: number, count?: number}): Promise<any>`
 * `token.status.update(text: string, inReplyToStatusId?: number): Promise<any>`
 * `token.status.show(id: string): Promise<any>`
