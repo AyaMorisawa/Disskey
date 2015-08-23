@@ -51,4 +51,4 @@ Please install by using npm.
 * request-promise
 
 ## License
-misskey.ts is licensed under the MIT License.
+misskey.ts is licensed under the MIT License. See [LICENSE](../LICENSE)
