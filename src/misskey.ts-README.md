@@ -39,7 +39,7 @@ doSomething(token);
 
 ### Low-level function
 ```ts
-token.callApiWithHeaders<any>('status/update', {
+token.callApiWithHeaders<IStatus>('status/update', {
 	method: 'POST',
 	form: {
 		text: 'Hello, world!'
