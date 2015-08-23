@@ -3,6 +3,13 @@ misskey.ts
 
 [misskey.ts](misskey.ts) is a Misskey library for Node.js, written in TypeScript, developed for Disskey.
 
+## Download
+```
+curl https://raw.githubusercontent.com/AyaMorisawa/Disskey/master/src/misskey.ts > misskey.ts
+```
+
+If you want to use misskey.ts from JavaScript, please build Disskey yourself.
+
 ## Usage
 ```ts
 import { SAuth, Token } from 'path/to/misskey';
