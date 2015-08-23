@@ -54,6 +54,12 @@ token.callApiWithHeaders<any>('status/update', {
 * `token.status.repost(id: string, text?: string): Promise<any>`
 * `token.status.favorite(id: string): Promise<any>`
 
+### Users API
+* `token.users.showById(id: string): Promise<any>`
+* `token.users.showByScreenName(screenName: string): Promise<any>`
+* `token.users.follow(id: string): Promise<any>`
+* `token.users.unfollow(id: string): Promise<any>`
+
 ## Dependencies
 Please install by using npm.
 

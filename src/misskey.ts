@@ -66,6 +66,7 @@ export class Token {
 	appKey: string;
 	userKey: string;
 	status: StatusApi;
+	users: UsersApi;
 
 	static create(session: SAuth.Session, pincode: string) {
 		return session.getUserKey(pincode).then(userKey => new Token(session.appKey, userKey));
@@ -75,6 +76,7 @@ export class Token {
 		this.appKey = appKey;
 		this.userKey = userKey;
 		this.status = new StatusApi(this);
+		this.users = new UsersApi(this);
 	}
 
 	callApiWithHeaders<T>(endpoint: string, options: request.Options = {}) {
@@ -142,6 +144,44 @@ export class StatusApi extends MisskeyApi {
 			method: 'POST',
 			form: {
 				'status-id': id
+			}
+		});
+	}
+}
+
+export class UsersApi extends MisskeyApi {
+	showById(id: string) {
+		return this.token.callApiWithHeaders<any>('users/show', {
+			method: 'GET',
+			form: {
+				'user-id': id
+			}
+		});
+	}
+
+	showByScreenName(screenName: string) {
+		return this.token.callApiWithHeaders<any>('users/show', {
+			method: 'GET',
+			form: {
+				'screen-name': screenName
+			}
+		});
+	}
+
+	follow(id: string) {
+		return this.token.callApiWithHeaders<any>('users/follow', {
+			method: 'POST',
+			form: {
+				'user-id': id
+			}
+		});
+	}
+
+	unfollow(id: string) {
+		return this.token.callApiWithHeaders<any>('users/unfollow', {
+			method: 'DELETE',
+			form: {
+				'user-id': id
 			}
 		});
 	}
