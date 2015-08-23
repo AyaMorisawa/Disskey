@@ -11,6 +11,8 @@ curl https://raw.githubusercontent.com/AyaMorisawa/Disskey/master/src/misskey.ts
 If you want to use misskey.ts from JavaScript, please build Disskey yourself.
 
 ## Usage
+*misskey.ts* provides very simple authentication and straightforward API.
+
 ```ts
 import { SAuth, Token } from 'path/to/misskey';
 
