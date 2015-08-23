@@ -21,6 +21,7 @@ SAuth.Session.create('app-key')
 function doSomething(token: Token) {
 	console.log(token.userKey);
 	token.status.getTimeline().then(posts => console.log(posts));
+	token.status.update('Hello, world!');
 }
 ```
 
