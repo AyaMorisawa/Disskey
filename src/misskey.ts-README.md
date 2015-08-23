@@ -61,10 +61,13 @@ token.callApiWithHeaders<any>('status/update', {
 * `token.users.unfollow(id: string): Promise<any>`
 
 ## Dependencies
-Please install by using npm.
-
+### npm packages
 * open
 * request
+* request-promise
+
+### Type definitions
+* open
 * request-promise
 
 ## License
