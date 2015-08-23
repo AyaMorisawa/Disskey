@@ -43,6 +43,13 @@ token.callApiWithHeaders<any>('status/update', {
 ## Example
 * https://gist.github.com/AyaMorisawa/a1d0836beac75a6dc9e9
 
+## Supported API
+* `token.status.getTimeline(options?: {sinceCursor?: number, maxCursor?: number, count?: number}): Promise<any>`
+* `token.status.update(text: string, inReplyToStatusId?: number): Promise<any>`
+* `token.status.show(id: string): Promise<any>`
+* `token.status.repost(id: string, text?: string): Promise<any>`
+* `token.status.favorite(id: string): Promise<any>`
+
 ## Dependencies
 Please install by using npm.
 
