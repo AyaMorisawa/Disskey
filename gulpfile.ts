@@ -12,7 +12,7 @@ task('start', () => {
 	shelljs.exec('electron .');
 });
 
-task('build', ['build:ts', 'build:html']);
+task('build', ['build:ts', 'build:html', 'build:css']);
 
 task('build:ts', () => {
 	var tsResult = tsProject.src()
@@ -25,6 +25,12 @@ task('build:html', () => {
 	return src('./src/**/*.html')
 		.pipe(dest('./built'));
 });
+
+task('build:css', () => {
+	return src('./src/**/*.css')
+		.pipe(dest('./built'));
+});
+
 
 task('lint', () => {
 	return src('./src/**/*.ts')
