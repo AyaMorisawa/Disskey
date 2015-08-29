@@ -9,16 +9,16 @@
     "build": "gulp build",
     "watch": "tsc -w",
     "lint": "gulp lint",
-	"clean": "gulp clean",
+    "clean": "gulp clean",
     "test": "gulp test"
   },
   "license": "MIT",
   "devDependencies": {
+    "del": "^1.2.1",
     "dtsm": "^0.10.3",
     "gulp": "^3.9.0",
     "gulp-tslint": "^3.2.0",
     "gulp-typescript": "^2.8.1",
-    "rimraf": "^2.4.3",
     "shelljs": "^0.5.3",
     "tslint": "^2.4.3",
     "typescript": "^1.5.3",

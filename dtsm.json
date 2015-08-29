@@ -39,6 +39,9 @@
     },
     "shelljs/shelljs.d.ts": {
       "ref": "67605e10f6eb01c9d4a0d13719d804d6dea9e1cb"
+    },
+    "del/del.d.ts": {
+      "ref": "67605e10f6eb01c9d4a0d13719d804d6dea9e1cb"
     }
   }
 }

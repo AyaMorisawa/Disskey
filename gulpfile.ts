@@ -4,7 +4,7 @@ import { task, src, dest } from 'gulp';
 import * as ts from 'gulp-typescript';
 import * as tslint from 'gulp-tslint';
 import * as shelljs from 'shelljs';
-import * as rimraf from 'rimraf';
+import * as del from 'del';
 
 var tsProject = ts.createProject('tsconfig.json');
 
@@ -33,7 +33,7 @@ task('lint', () => {
 });
 
 task('clean', (cb) => {
-	rimraf('./built', cb);
+	del(['./node_modules', './typings', './built', './tmp'], cb);
 })
 
-task('test', ['build', 'tslint']);
+task('test', ['build', 'lint']);
