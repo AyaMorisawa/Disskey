@@ -2,22 +2,24 @@
   "name": "disskey",
   "version": "0.0.1",
   "description": "Misskey client for desktop",
-  "main": "src/index.js",
+  "main": "built/index.js",
   "scripts": {
-    "start": "electron .",
+    "start": "gulp start",
     "dtsm": "dtsm --insight false install && sed -i -e '/node_modules/d' typings/bundle.d.ts",
     "build": "gulp build",
     "watch": "tsc -w",
-    "lint": "gulp tslint",
+    "lint": "gulp lint",
+	"clean": "gulp clean",
     "test": "gulp test"
   },
   "license": "MIT",
   "devDependencies": {
     "dtsm": "^0.10.3",
     "gulp": "^3.9.0",
-    "gulp-dtsm": "9joneg/gulp-dtsm",
     "gulp-tslint": "^3.2.0",
     "gulp-typescript": "^2.8.1",
+    "rimraf": "^2.4.3",
+    "shelljs": "^0.5.3",
     "tslint": "^2.4.3",
     "typescript": "^1.5.3",
     "typescript-require": "^0.2.9"

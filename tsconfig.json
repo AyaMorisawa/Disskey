@@ -6,7 +6,9 @@
 		"module": "commonjs",
 		"target": "ES5",
 		"removeComments": true,
-		"noLib": false
+		"noLib": false,
+		"outDir": "built",
+		"rootDir": "src"
 	},
 	"files": [
 		"typings/bundle.d.ts",

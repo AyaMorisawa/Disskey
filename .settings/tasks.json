@@ -6,8 +6,20 @@
 		{
 			"taskName": "build",
 			"isBuildCommand": true,
-			"showOutput": "silent",
-			"problemMatcher": "$gulp-tsc"
+			"showOutput": "silent"
+		},
+		{
+			"taskName": "test",
+			"isTestCommand": true,
+			"showOutput": "silent"
+		},
+		{
+			"taskName": "lint",
+			"showOutput": "silent"
+		},
+		{
+			"taskName": "clean",
+			"showOutput": "silent"
 		}
 	] 
 }
