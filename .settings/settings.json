@@ -4,7 +4,8 @@
 		"**/.DS_Store": true,
 		"node_modules": true,
 		"typings": true,
-		"tmp": true
+		"tmp": true,
+		"built": true
 	},
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false

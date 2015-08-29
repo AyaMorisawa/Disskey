@@ -4,6 +4,10 @@
 	"isShellCommand": true,
 	"tasks": [
 		{
+			"taskName": "start",
+			"showOutput": "silent"
+		},
+		{
 			"taskName": "build",
 			"isBuildCommand": true,
 			"showOutput": "silent"

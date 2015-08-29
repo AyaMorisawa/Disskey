@@ -100,7 +100,7 @@ export class MisskeyApi {
 
 export class StatusApi extends MisskeyApi {
 	getTimeline(options: {sinceCursor?: number, maxCursor?: number, count?: number} = {}) {
-		return this.token.callApiWithHeaders<IStatus>('status/timeline', {
+		return this.token.callApiWithHeaders<any>('status/timeline', {
 			method: 'GET',
 			form: {
 				'since-cursor': typeof options.sinceCursor === 'number' ? options.sinceCursor.toString() : void 0,
@@ -111,7 +111,7 @@ export class StatusApi extends MisskeyApi {
 	}
 
 	update(text: string, inReplyToStatusId?: number) {
-		return this.token.callApiWithHeaders<IStatus>('status/update', {
+		return this.token.callApiWithHeaders<any>('status/update', {
 			method: 'POST',
 			form: {
 				text,
@@ -121,7 +121,7 @@ export class StatusApi extends MisskeyApi {
 	}
 
 	show(id: string) {
-		return this.token.callApiWithHeaders<IStatus>('status/show', {
+		return this.token.callApiWithHeaders<any>('status/show', {
 			method: 'GET',
 			form: {
 				'status-id': id
@@ -130,7 +130,7 @@ export class StatusApi extends MisskeyApi {
 	}
 
 	repost(id: string, text?: string) {
-		return this.token.callApiWithHeaders<IStatus>('status/repost', {
+		return this.token.callApiWithHeaders<any>('status/repost', {
 			method: 'POST',
 			form: {
 				'status-id': id,
@@ -140,7 +140,7 @@ export class StatusApi extends MisskeyApi {
 	}
 
 	favorite(id: string) {
-		return this.token.callApiWithHeaders<IStatus>('status/favorite', {
+		return this.token.callApiWithHeaders<any>('status/favorite', {
 			method: 'POST',
 			form: {
 				'status-id': id
@@ -185,28 +185,6 @@ export class UsersApi extends MisskeyApi {
 			}
 		});
 	}
-}
-
-interface IStatus {
-	appId: string;
-	createdAt: string;
-	cursor: number;
-	displayCreatedAt: string;
-	favoritesCount: number;
-	id: string;
-	imageUrls: string[];
-	inReplyToStatusId: string;
-	isImageAttached: boolean;
-	isReply: boolean;
-	isRepostToStatus: boolean;
-	replies: string[];
-	repliesCount: number;
-	repostFromStatusId: string;
-	repostsCount: number;
-	tags: string[];
-	text: string;
-	user: IUser;
-	userId: string;
 }
 
 interface IUser {
