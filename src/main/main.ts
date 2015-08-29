@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Token } from '../misskey';
 import config from '../config';
-import Auth from './auth';
+import AuthForm from './AuthForm';
 
 var { div } = React.DOM;
 
@@ -26,7 +26,7 @@ class App extends React.Component<{}, IAppState> {
 	render() {
 		return this.state.existUserKey
 			? div({}, `Your user-key: ${this.state.token.userKey}`)
-			: React.createElement(Auth, {
+			: React.createElement(AuthForm, {
 				appKey: config.sauthAppKey,
 				onGetToken: this.onGetToken.bind(this)
 			});

@@ -2,33 +2,33 @@ import * as React from 'react';
 import { SAuth, Token } from '../misskey';
 var mui = require('material-ui');
 var ThemeManager = new mui.Styles.ThemeManager();
-var { RaisedButton } = mui;
+var { RaisedButton, TextField } = mui;
 
-var { div, input, button } = React.DOM;
+var { div } = React.DOM;
 
-export interface IAuthProps {
+export interface IAuthFormProps {
 	appKey: string;
 	onGetToken: (token: Token) => void;
 }
 
-export interface IAuthState {
+export interface IAuthFormState {
 	pincode?: string;
 	session?: SAuth.Session;
 }
 
 exports = module.exports;
 
-export default class Auth extends React.Component<IAuthProps, IAuthState> {
-	constructor(props: IAuthProps) {
+export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormState> {
+	constructor(props: IAuthFormProps) {
 		super(props);
 		this.state = {
 			pincode: ''
 		};
 	}
-	
+
 	static childContextTypes: React.ValidationMap<any> = {
 		muiTheme: React.PropTypes.object
-	}
+	};
 
 	getChildContext() {
 		return {
@@ -42,12 +42,12 @@ export default class Auth extends React.Component<IAuthProps, IAuthState> {
 			session.openAuthorizePage();
 		});
 	}
-	
-	onChangePincode = (e: any) => {
+
+	onChangePincode(e: any) {
 		this.setState({pincode: e.target.value});
 	}
-	
-	onSubmitPincode = () => {
+
+	onSubmitPincode() {
 		var session = this.state.session;
 		if (session != null) {
 			Token.create(session, this.state.pincode)
@@ -57,14 +57,13 @@ export default class Auth extends React.Component<IAuthProps, IAuthState> {
 
 	render() {
 		return div({},
-			div({}, 'Enter the pincode.'),
-			input({
-				type: 'text',
+			React.createElement(TextField, {
+				hintText: 'Enter the pincode.',
 				value: this.state.pincode,
-				onChange: this.onChangePincode
+				onChange: this.onChangePincode.bind(this)
 			}),
 			React.createElement(RaisedButton, {
-				onClick: this.onSubmitPincode	,
+				onClick: this.onSubmitPincode.bind(this),
 				linkButton: true,
 				label: 'Submit'
 			})
