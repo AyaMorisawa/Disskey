@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SAuth, Token } from '../misskey';
+import fixedContainer from '../fixedContainer';
 var mui = require('material-ui');
 var ThemeManager = new mui.Styles.ThemeManager();
 var { RaisedButton, TextField } = mui;
@@ -56,16 +57,31 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 	};
 
 	render() {
-		return div({},
-			React.createElement(TextField, {
+		return fixedContainer(
+			div({
+				style: {
+					position: 'absolute',
+					top: 32,
+					right: 32,
+					left: 32
+				}
+			}, React.createElement(TextField, {
 				hintText: 'Enter the pincode.',
 				value: this.state.pincode,
-				onChange: this.onChangePincode.bind(this)
-			}),
+				onChange: this.onChangePincode.bind(this),
+				style: {
+					width: '100%'
+				}
+			})),
 			React.createElement(RaisedButton, {
 				onClick: this.onSubmitPincode.bind(this),
 				linkButton: true,
-				label: 'Submit'
+				label: 'Submit',
+				style: {
+					position: 'absolute',
+					top: 100,
+					right: 32
+				}
 			})
 		);
 	}

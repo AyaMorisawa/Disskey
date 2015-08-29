@@ -15,6 +15,7 @@
 		"src/index.ts",
 		"src/config.ts",
 		"src/misskey.ts",
+		"src/fixedContainer.ts",
 		"src/main/main.ts",
 		"src/main/AuthForm.ts"
 	]
