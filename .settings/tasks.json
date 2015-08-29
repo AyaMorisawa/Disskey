@@ -5,7 +5,12 @@
 	"tasks": [
 		{
 			"taskName": "start",
-			"showOutput": "silent"
+			"showOutput": "silent",
+			"isWatching": true
+		},
+		{
+			"taskName": "watch",
+			"isWatching": true
 		},
 		{
 			"taskName": "build",

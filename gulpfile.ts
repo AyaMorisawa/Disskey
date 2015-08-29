@@ -1,6 +1,6 @@
 /// <reference path="typings/bundle.d.ts" />
 
-import { task, src, dest } from 'gulp';
+import { task, src, dest, watch } from 'gulp';
 import * as ts from 'gulp-typescript';
 import * as tslint from 'gulp-tslint';
 import * as shelljs from 'shelljs';
@@ -10,6 +10,12 @@ var tsProject = ts.createProject('tsconfig.json');
 
 task('start', () => {
 	shelljs.exec('electron .');
+});
+
+task('watch', ['build'], () => {
+	watch('./src/**/*.ts', ['build:ts']);
+	watch('./src/**/*.html', ['build:html']);
+	watch('./src/**/*.html', ['build:css']);
 });
 
 task('build', ['build:ts', 'build:html', 'build:css']);
