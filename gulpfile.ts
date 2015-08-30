@@ -45,7 +45,15 @@ task('lint', () => {
 });
 
 task('clean', (cb) => {
-	del(['./node_modules', './typings', './built', './tmp'], cb);
+	del(['./built', './tmp', './release'], cb);
+});
+
+task('clean-all',['clean'], (cb) => {
+	del(['./node_modules', './typings'], cb);
 })
 
 task('test', ['build', 'lint']);
+
+task('release', () => {
+	shelljs.exec('electron-packager ./ disskey --all --version=0.31.1 --out=release --ignore=src');
+});

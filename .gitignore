@@ -1,5 +1,6 @@
 /node_modules
 /built
+/release
 /typings
 npm-debug.log
 /tmp

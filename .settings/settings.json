@@ -5,7 +5,8 @@
 		"node_modules": true,
 		"typings": true,
 		"tmp": true,
-		"built": true
+		"built": true,
+		"release": true
 	},
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false
