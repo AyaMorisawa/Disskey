@@ -9,3 +9,5 @@ npm-debug.log
 /gulpfile.ts
 /tsconfig.json
 /tslint.json
+/.settings
+/.npmignore
