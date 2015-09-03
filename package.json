@@ -2,7 +2,8 @@
   "name": "disskey",
   "version": "0.0.1",
   "description": "Misskey client for desktop",
-  "main": "built/index.js",
+  "main": "./built/index.js",
+  "bin": "./bin/disskey",
   "scripts": {
     "start": "gulp start",
     "dtsm": "dtsm --insight false install",
@@ -36,5 +37,5 @@
     "request-promise": "^0.4.3",
     "satch": "^0.1.10"
   },
-  "private": true
+  "private": false
 }

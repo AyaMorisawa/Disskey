@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+var shelljs = require('shelljs');
+var path = require('path');
+var fs = require('fs');
+
+shelljs.cd(path.join(path.dirname(fs.realpathSync(__filename)), '../'));
+shelljs.exec('npm start');
