@@ -8,6 +8,12 @@ export interface IConfig {
 	userKey?: string;
 }
 
+var appConfig: IConfig = {
+	appKey: 'hmsk.HXLcVOeFfHhKPwZvdKBCgpyyTvtqrDAw'
+};
+
+export default appConfig;
+
 export var userConfigDirPath = path.join((process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME, '.disskey');
 
 export var userConfigFilePath = path.join(userConfigDirPath, 'config.json');
@@ -31,7 +37,7 @@ export function existUserConfig() {
 export function readUserConfig() {
 	return existUserConfig().then<IConfig>((exist: boolean) => {
 		if (!exist) {
-			writeUserConfig(config);
+			writeUserConfig(appConfig);
 			return Promise.resolve({});
 		}
 		return new Promise<IConfig>((resolve, reject) => {
@@ -49,9 +55,3 @@ export function readUserConfig() {
 export function writeUserConfig(config: IConfig): void {
 	mkdirp(userConfigDirPath, () => fs.writeFile(userConfigFilePath, JSON.stringify(config)));
 }
-
-var config: IConfig = {
-	appKey: 'hmsk.HXLcVOeFfHhKPwZvdKBCgpyyTvtqrDAw'
-};
-
-export default config;
