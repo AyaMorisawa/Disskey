@@ -9,7 +9,7 @@ This project is being developed and is an experiment more than anything else now
 
 ## Installation
 ```
-npm install disskey
+npm install -g disskey
 ```
 
 ## Launch
