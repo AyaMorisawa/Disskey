@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Token } from '../misskey';
-import config from '../config';
+import config, { readUserConfig, writeUserConfig } from '../config';
 import AuthForm, { IAuthFormProps } from './AuthForm';
 import { Match } from 'satch';
 
@@ -22,12 +22,20 @@ class App extends React.Component<{}, IAppState> {
 	}
 
 	componentDidMount() {
-		var existUserKey = false; // TODO: Check token
-		if (existUserKey) {
-			// TODO: Set token
-		}
-		this.setState({
-			checkingToken: false
+		readUserConfig().then(userConfig => {
+			var mergedConfig = userConfig; // TODO: merge(config, userConfig);
+			var existUserKey = mergedConfig.userKey !== void 0;
+			if (existUserKey) {
+				this.setState({
+					checkingToken: false,
+					token: new Token(config.appKey, mergedConfig.userKey), // TODO: mergedConfig.appKey
+					existToken: true
+				});
+			} else {
+				this.setState({
+					checkingToken: false
+				});
+			}
 		});
 	}
 
@@ -35,7 +43,10 @@ class App extends React.Component<{}, IAppState> {
 		this.setState({
 			token, existToken: true
 		});
-		console.log(token.userKey); // debug
+		readUserConfig().then(userConfig => {
+			userConfig.userKey = token.userKey;
+			writeUserConfig(userConfig);
+		});
 		(<any>window).token = token; // debug
 	}
 
@@ -43,7 +54,7 @@ class App extends React.Component<{}, IAppState> {
 		return new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
 			.when(() => this.state.checkingToken, () => div({}, '[splash window]'))
 			.when(() => !this.state.existToken, () => React.createElement<IAuthFormProps>(AuthForm, {
-				appKey: config.sauthAppKey,
+				appKey: config.appKey,
 				onGetToken: this.onGetToken.bind(this)
 			}))
 			.default(() => div({}, `Your user-key: ${this.state.token.userKey}`));

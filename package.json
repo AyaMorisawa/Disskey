@@ -4,6 +4,9 @@
   "description": "Misskey client for desktop",
   "main": "./built/index.js",
   "bin": "./bin/disskey",
+  "repository": {
+    "url": "https://github.com/AyaMorisawa/Disskey.git"
+  },
   "scripts": {
     "start": "gulp start",
     "dtsm": "dtsm --insight false install",
@@ -28,8 +31,10 @@
     "typescript-require": "^0.2.9"
   },
   "dependencies": {
+    "bluebird": "^2.9.34",
     "electron-prebuilt": "^0.30.4",
     "material-ui": "^0.11.0",
+    "mkdirp": "^0.5.1",
     "open": "0.0.5",
     "react": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
