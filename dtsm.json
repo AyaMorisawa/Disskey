@@ -9,7 +9,7 @@
   "bundle": "typings/bundle.d.ts",
   "link": {
     "npm": {
-      "include": true
+      "include": false
     }
   },
   "dependencies": {
