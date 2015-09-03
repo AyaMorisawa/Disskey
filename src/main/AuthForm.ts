@@ -66,7 +66,7 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 					left: 32
 				}
 			}, React.createElement(TextField, {
-				hintText: 'Enter the pincode.',
+				floatingLabelText: 'Enter the pincode',
 				value: this.state.pincode,
 				onChange: this.onChangePincode.bind(this),
 				style: {
