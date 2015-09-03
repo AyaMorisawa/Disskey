@@ -1,0 +1,11 @@
+/node_modules
+/src
+/release
+/typings
+npm-debug.log
+/tmp
+/.travis.yml
+/dtsm.json
+/gulpfile.ts
+/tsconfig.json
+/tslint.json
