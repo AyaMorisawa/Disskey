@@ -34,7 +34,7 @@
     "react": "^0.13.3",
     "request": "^2.61.0",
     "request-promise": "^0.4.3",
-    "satch": "^0.1.8"
+    "satch": "^0.1.10"
   },
   "private": true
 }

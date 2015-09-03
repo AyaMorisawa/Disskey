@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Token } from '../misskey';
 import config from '../config';
 import AuthForm, { IAuthFormProps } from './AuthForm';
+import { Match } from 'satch';
 
 var { div } = React.DOM;
 
@@ -21,13 +22,12 @@ class App extends React.Component<{}, IAppState> {
 	}
 
 	componentDidMount() {
-		var existUserKey = true; // TODO: Check token
+		var existUserKey = false; // TODO: Check token
 		if (existUserKey) {
 			// TODO: Set token
 		}
 		this.setState({
-			checkingToken: false,
-			existToken: existUserKey
+			checkingToken: false
 		});
 	}
 
@@ -39,18 +39,14 @@ class App extends React.Component<{}, IAppState> {
 		(<any>window).token = token; // debug
 	}
 
-	render(): React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps> {
-		switch (true) {
-			case this.state.checkingToken:
-				return div({}, '[splash window]');
-			case !this.state.existToken:
-				return React.createElement<IAuthFormProps>(AuthForm, {
-					appKey: config.sauthAppKey,
-					onGetToken: this.onGetToken.bind(this)
-				});
-			default:
-				return div({}, `Your user-key: ${this.state.token.userKey}`);
-		}
+	render() {
+		return new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
+			.when(() => this.state.checkingToken, () => div({}, '[splash window]'))
+			.when(() => !this.state.existToken, () => React.createElement<IAuthFormProps>(AuthForm, {
+				appKey: config.sauthAppKey,
+				onGetToken: this.onGetToken.bind(this)
+			}))
+			.default(() => div({}, `Your user-key: ${this.state.token.userKey}`));
 	}
 }
 
