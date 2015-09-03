@@ -53,5 +53,5 @@ export function readUserConfig() {
 }
 
 export function writeUserConfig(config: IConfig): void {
-	mkdirp(userConfigDirPath, () => fs.writeFile(userConfigFilePath, JSON.stringify(config)));
+	mkdirp(userConfigDirPath, () => fs.writeFile(userConfigFilePath, JSON.stringify(config, null, '\t')));
 }
