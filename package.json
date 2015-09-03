@@ -1,6 +1,6 @@
 {
   "name": "disskey",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Misskey client for desktop",
   "main": "./built/index.js",
   "bin": "./bin/disskey",
@@ -35,7 +35,7 @@
     "request": "^2.61.0",
     "request-promise": "^0.4.3",
     "satch": "^0.1.10",
-	"shelljs": "^0.5.3"
+    "shelljs": "^0.5.3"
   },
   "private": false
 }
