@@ -3,5 +3,6 @@ var shelljs = require('shelljs');
 var path = require('path');
 var fs = require('fs');
 
-shelljs.cd(path.join(path.dirname(fs.realpathSync(__filename)), '../'));
-shelljs.exec('electron .');
+var packageDir = path.join(path.dirname(fs.realpathSync(__filename)), '../');
+shelljs.cd(packageDir);
+shelljs.exec(path.join(packageDir, 'node_modules', '.bin', 'electron') + ' .');
