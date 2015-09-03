@@ -19,10 +19,10 @@ class App extends React.Component<{}, IAppState> {
 			existToken: false
 		};
 	}
-	
+
 	componentDidMount() {
 		var existUserKey = true; // TODO: Check token
-		if(existUserKey) {
+		if (existUserKey) {
 			// TODO: Set token
 		}
 		this.setState({
@@ -30,7 +30,7 @@ class App extends React.Component<{}, IAppState> {
 			existToken: existUserKey
 		});
 	}
-	
+
 	onGetToken(token: Token) {
 		this.setState({
 			token, existToken: true
