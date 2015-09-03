@@ -20,7 +20,6 @@
     "del": "^1.2.1",
     "dtsm": "^0.10.3",
     "electron-packager": "^5.0.2",
-    "gulp": "^3.9.0",
     "gulp-tslint": "^3.2.0",
     "gulp-typescript": "^2.8.1",
     "tslint": "^2.4.3",
@@ -29,6 +28,7 @@
   },
   "dependencies": {
     "electron-prebuilt": "^0.30.4",
+    "gulp": "^3.9.0",
     "material-ui": "^0.11.0",
     "open": "0.0.5",
     "react": "^0.13.3",
