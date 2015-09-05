@@ -57,7 +57,7 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 	};
 
 	render() {
-		return fixedContainer(
+		return fixedContainer({},
 			div({
 				style: {
 					position: 'absolute',
