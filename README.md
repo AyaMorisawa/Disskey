@@ -20,7 +20,7 @@ npm install -g disskey
 3. `npm install`
 4. `npm run dtsm`
 5. `npm run build`
-6. `npm link`
+6. `sudo npm link`
 
 ## Launch
 Run `disskey` in your terminal.
