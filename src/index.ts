@@ -15,8 +15,18 @@ app.on('ready', () => {
 		mainWindow = null;
 	});
 
-	Menu.setApplicationMenu(null);
+	Menu.setApplicationMenu(Menu.buildFromTemplate([{
+		label: 'View',
+		submenu: [{
+			label: 'Reload',
+			accelerator: 'Ctrl+R',
+			click: () => mainWindow.reload()
+		}, {
+			label: 'Toggle &Developer Tools',
+			accelerator: 'Ctrl+Shift+I',
+			click: () => mainWindow.toggleDevTools()
+		}]
+	}]));
 
 	mainWindow.loadUrl(`file://${__dirname}/main/main.html`);
-	mainWindow.openDevTools();
 });
