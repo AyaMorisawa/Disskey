@@ -13,10 +13,12 @@
 	"files": [
 		"typings/bundle.d.ts",
 		"src/index.ts",
-		"src/config.ts",
 		"src/misskey.ts",
 		"src/fixedContainer.ts",
 		"src/main/main.ts",
-		"src/main/AuthForm.ts"
+		"src/main/AuthForm.ts",
+		"src/config/IConfig.ts",
+		"src/config/app.ts",
+		"src/config/user.ts"
 	]
 }
