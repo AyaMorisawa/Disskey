@@ -17,6 +17,7 @@
 		"src/fixedContainer.ts",
 		"src/main/main.ts",
 		"src/main/AuthForm.ts",
+		"src/main/PostForm.ts",
 		"src/config/IConfig.ts",
 		"src/config/app.ts",
 		"src/config/user.ts"

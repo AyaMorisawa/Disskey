@@ -4,8 +4,9 @@ import IConfig from '../config/IConfig';
 import appConfig from '../config/app';
 import * as userConfigProvider from '../config/user';
 import AuthForm, { IAuthFormProps } from './AuthForm';
+import PostFrom, { IPostFormProps } from './PostForm';
 import { Match } from 'satch';
-import fixedContainer from '../fixedContainer'
+import fixedContainer from '../fixedContainer';
 var objectAssign: (target: any, ...sources: any[]) => any = require('object-assign');
 
 var { div } = React.DOM;
@@ -60,6 +61,10 @@ class App extends React.Component<{}, IAppState> {
 		});
 	}
 
+	updateStatus(text: string) {
+		this.state.token.status.update(text);
+	}
+
 	render() {
 		return new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
 			.when(() => !this.state.ready, () => fixedContainer({}, div({
@@ -76,7 +81,11 @@ class App extends React.Component<{}, IAppState> {
 				appKey: this.state.config.appKey,
 				onGetToken: this.onGetToken.bind(this)
 			}))
-			.default(() => div({}, `Your user-key: ${this.state.token.userKey}`));
+			.default(() => fixedContainer({},
+				div({}, React.createElement<IPostFormProps>(PostFrom, {
+					onSubmit: this.updateStatus.bind(this)
+				}))
+			));
 	}
 }
 
