@@ -50,7 +50,7 @@ export namespace SAuth {
 				form: {
 					'authentication-session-key': this.sessionKey,
 					'pin-code': pincode
-				},
+				}
 			}).then(data => data.userKey);
 		}
 	}
