@@ -15,8 +15,6 @@ export interface IAuthFormState {
 	session?: SAuth.Session;
 }
 
-exports = module.exports;
-
 export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormState> {
 	constructor(props: IAuthFormProps) {
 		super(props);

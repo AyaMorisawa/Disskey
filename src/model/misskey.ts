@@ -1,6 +1,6 @@
 import {Options as requestOptions} from 'request';
 import request from './request-promise';
-import open from 'open';
+var open = require('open');
 
 export var baseUrl = 'http://api.misskey.xyz';
 
