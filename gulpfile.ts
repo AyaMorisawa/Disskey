@@ -5,6 +5,7 @@ import * as ts from 'gulp-typescript';
 import * as tslint from 'gulp-tslint';
 import * as shelljs from 'shelljs';
 import * as del from 'del';
+var babel = require('gulp-babel');
 
 var tsProject = ts.createProject('tsconfig.json', <any>{
 	typescript: require('typescript')
@@ -25,6 +26,9 @@ task('build', ['build:ts', 'build:html', 'build:css']);
 task('build:ts', () => {
 	return tsProject.src()
 		.pipe(ts(tsProject))
+		.pipe(babel({
+			modules: 'commonStrict'
+		}))
 		.pipe(dest('./built'));
 });
 
