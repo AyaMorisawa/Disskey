@@ -22,9 +22,6 @@
     "github-electron/github-electron-main.d.ts": {
       "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
     },
-    "request-promise/request-promise.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
-    },
     "open/open.d.ts": {
       "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
     },
@@ -45,6 +42,9 @@
     },
     "mkdirp/mkdirp.d.ts": {
       "ref": "7c228c09302f51d19b6b93fcfc5decaf8e8bbaa2"
+    },
+    "request/request.d.ts": {
+      "ref": "7a3ca1f0b8a0960af9fc1838f3234cc9d6ce0645"
     }
   }
 }

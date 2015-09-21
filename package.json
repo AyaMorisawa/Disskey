@@ -32,7 +32,6 @@
     "typescript-require": "^0.2.9"
   },
   "dependencies": {
-    "bluebird": "^2.9.34",
     "electron-prebuilt": "^0.30.4",
     "material-ui": "^0.11.0",
     "mkdirp": "^0.5.1",
@@ -41,7 +40,6 @@
     "react": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
     "request": "^2.61.0",
-    "request-promise": "^0.4.3",
     "satch": "^0.1.10",
     "shelljs": "^0.5.3"
   },

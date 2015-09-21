@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import * as Promise from 'bluebird';
 import * as mkdirp from 'mkdirp';
 import IConfig from './IConfig';
 import appConfig from './app';
