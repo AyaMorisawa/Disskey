@@ -67,7 +67,7 @@ class App extends React.Component<{}, IAppState> {
 
 	render() {
 		return new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
-			.when(() => !this.state.ready, () => fixedContainer({}, div({
+			.when(() => !this.state.ready, () => fixedContainer({}, div(<any>{
 					style: {
 						position: 'absolute',
 						top: '50%',
