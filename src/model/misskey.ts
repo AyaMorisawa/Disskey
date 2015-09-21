@@ -9,8 +9,6 @@ export function callApi<T>(endpoint: string, options: requestOptions = {}): Prom
 	return request(options).then(result => <T>JSON.parse(result));
 }
 
-export type User = any;
-
 export namespace SAuth {
 	export class Session {
 		appKey: string;
