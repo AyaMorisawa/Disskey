@@ -67,7 +67,10 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 		}), React.createElement(RaisedButton, {
 			onClick: this.onSubmitPincode.bind(this),
 			linkButton: true,
-			label: 'Submit'
+			label: 'Submit',
+			style: {
+				float: 'right'
+			}
 		}));
 	}
 }

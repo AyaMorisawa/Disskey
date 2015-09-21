@@ -56,7 +56,10 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 		}), React.createElement(RaisedButton, {
 			onClick: this.onSubmit.bind(this),
 			linkButton: true,
-			label: 'Submit'
+			label: 'Submit',
+			style: {
+				float: 'right'
+			}
 		}));
 	}
 }
