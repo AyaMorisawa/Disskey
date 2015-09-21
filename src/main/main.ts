@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Token } from '../misskey';
+import { Token } from '../model/misskey';
 import IConfig from '../config/IConfig';
 import appConfig from '../config/app';
 import * as userConfigProvider from '../config/user';

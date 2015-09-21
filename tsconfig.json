@@ -12,7 +12,8 @@
 	"files": [
 		"typings/bundle.d.ts",
 		"src/index.ts",
-		"src/misskey.ts",
+		"src/model/misskey.ts",
+		"src/model/request-promise.ts",
 		"src/fixedContainer.ts",
 		"src/main/main.ts",
 		"src/main/AuthForm.ts",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SAuth, Token } from '../misskey';
+import { SAuth, Token } from '../model/misskey';
 import fixedContainer from '../fixedContainer';
 var mui = require('material-ui');
 var ThemeManager = new mui.Styles.ThemeManager();

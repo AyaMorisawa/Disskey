@@ -1,14 +1,12 @@
-/* The MIT License | Copyright (c) 2015 Aya */
+import {Options as requestOptions} from 'request';
+import request from './request-promise';
+import open from 'open';
 
-import * as request from 'request-promise';
-import open = require('open');
+export var baseUrl = 'http://api.misskey.xyz';
 
-export var baseUrl = 'https://api.misskey.xyz';
-
-export function callApi<T>(endpoint: string, options: request.Options = {}): Promise<T> {
+export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
 	options.url = `${baseUrl}/${endpoint}`;
-	options.json = true;
-	return request(options);
+	return request(options).then(result => <T>JSON.parse(result));
 }
 
 export type User = any;
@@ -20,15 +18,12 @@ export namespace SAuth {
 		authorizePageUrl: string;
 
 		static createSessionKey(appKey: string) {
-			return callApi<string>('sauth/get-authentication-session-key', {
+			return callApi<{ authenticationSessionKey: string }>('sauth/get-authentication-session-key', {
 				method: 'GET',
 				headers: {
 					'sauth-app-key': appKey
-				},
-				transform: (data: { authenticationSessionKey: string }): string => {
-					return data.authenticationSessionKey;
 				}
-			});
+			}).then(data => data.authenticationSessionKey);
 		}
 
 		static create(appKey: string): Promise<Session> {
@@ -47,7 +42,7 @@ export namespace SAuth {
 		}
 
 		getUserKey(pincode: string) {
-			return callApi<string>('sauth/get-user-key', {
+			return callApi<{ userKey: string }>('sauth/get-user-key', {
 				method: 'GET',
 				headers: {
 					'sauth-app-key': this.appKey
@@ -56,8 +51,7 @@ export namespace SAuth {
 					'authentication-session-key': this.sessionKey,
 					'pin-code': pincode
 				},
-				transform: (data: { userKey: string }): string => data.userKey
-			});
+			}).then(data => data.userKey);
 		}
 	}
 }
@@ -79,7 +73,7 @@ export class Token {
 		this.users = new UsersApi(this);
 	}
 
-	callApiWithHeaders<T>(endpoint: string, options: request.Options = {}) {
+	callApiWithHeaders<T>(endpoint: string, options: requestOptions = {}) {
 		if (options.headers === void 0) {
 			options.headers = {};
 		}
