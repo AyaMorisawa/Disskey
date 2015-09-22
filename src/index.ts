@@ -14,7 +14,8 @@ app.on('ready', () => {
 		height: 600,
 		title: 'Disskey',
 		frame: false,
-		show: false
+		show: false,
+		icon: './img/icon.png'
 	});
 
 	mainWindow.on('closed', () => {
