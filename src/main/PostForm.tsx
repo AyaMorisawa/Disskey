@@ -45,21 +45,17 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 	render() {
 		return fixedContainer({
 			margin: 32
-		}, React.createElement(TextField, {
-			floatingLabelText: "What's happening?",
-			value: this.state.text,
-			multiLine: true,
-			onChange: this.onChange.bind(this),
-			style: {
-				width: '100%'
-			}
-		}), React.createElement(RaisedButton, {
-			onClick: this.onSubmit.bind(this),
-			linkButton: true,
-			label: 'Submit',
-			style: {
-				float: 'right'
-			}
-		}));
+		}, <TextField
+			floatingLabelText="What's happening?"
+			value={this.state.text}
+			multiLine={true}
+			onChange={this.onChange.bind(this)}
+			style={{width: '100%'}}
+		/>, <RaisedButton
+			onClick={this.onSubmit.bind(this)}
+			linkButton={true}
+			label='Submit'
+			style={{float: 'right'}}
+		/>);
 	}
 }

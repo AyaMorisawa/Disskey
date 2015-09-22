@@ -17,8 +17,8 @@
 		"src/model/request-promise.ts",
 		"src/fixedContainer.ts",
 		"src/main/main.ts",
-		"src/main/AuthForm.ts",
-		"src/main/PostForm.ts",
+		"src/main/AuthForm.tsx",
+		"src/main/PostForm.tsx",
 		"src/config/IConfig.ts",
 		"src/config/app.ts",
 		"src/config/user.ts"
