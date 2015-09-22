@@ -12,8 +12,6 @@ export interface IPostFormState {
 	text?: string;
 }
 
-exports = module.exports;
-
 export default class PostForm extends React.Component<IPostFormProps, IPostFormState> {
 	constructor(props: IPostFormProps) {
 		super(props);
