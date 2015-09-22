@@ -1,11 +1,10 @@
 import {Options as requestOptions} from 'request';
 import request from './request-promise';
+import { appConfig } from './config';
 let open = require('open');
 
-export let baseUrl = 'http://api.misskey.xyz';
-
 export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
-	options.url = `${baseUrl}/${endpoint}`;
+	options.url = `${appConfig.apiBaseUrl}/${endpoint}`;
 	return request(options).then(result => <T>JSON.parse(result));
 }
 
@@ -32,7 +31,7 @@ export namespace SAuth {
 		constructor(appKey: string, sessionKey: string) {
 			this.appKey = appKey;
 			this.sessionKey = sessionKey;
-			this.authorizePageUrl = `${baseUrl}/authorize@${encodeURIComponent(sessionKey)}`;
+			this.authorizePageUrl = `${appConfig.apiBaseUrl}/authorize@${encodeURIComponent(sessionKey)}`;
 		}
 
 		openAuthorizePage() {

@@ -4,10 +4,12 @@ import * as file from './file';
 export interface IConfig {
 	appKey?: string;
 	userKey?: string;
+	apiBaseUrl?: string;
 }
 
 export let appConfig: IConfig = {
-	appKey: 'hmsk.HXLcVOeFfHhKPwZvdKBCgpyyTvtqrDAw'
+	appKey: 'hmsk.HXLcVOeFfHhKPwZvdKBCgpyyTvtqrDAw',
+	apiBaseUrl: 'http://api.misskey.xyz'
 };
 
 let userConfigDirPath = path.join((process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME, '.disskey');
