@@ -19,7 +19,7 @@
 		"src/model/config.ts",
 		"src/model/file.ts",
 		"src/fixedContainer.ts",
-		"src/main/main.ts",
+		"src/main/Main.tsx",
 		"src/main/AuthForm.tsx",
 		"src/main/PostForm.tsx"
 	]

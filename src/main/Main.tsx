@@ -6,8 +6,6 @@ import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../model/con
 import { Match } from 'satch';
 import fixedContainer from '../fixedContainer';
 
-let { div } = React.DOM;
-
 interface IAppState {
 	token?: Token;
 	ready?: boolean;
@@ -22,7 +20,7 @@ class App extends React.Component<{}, IAppState> {
 			ready: false,
 			existToken: false
 		};
-		(<any>window).app = this; // debug
+		(window as any).app = this; // debug
 	}
 
 	componentDidMount() {
@@ -64,26 +62,26 @@ class App extends React.Component<{}, IAppState> {
 
 	render() {
 		return new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
-			.when(() => !this.state.ready, () => fixedContainer({}, div(<any>{
-					style: {
+			.when(() => !this.state.ready, () => fixedContainer({},
+				<div style={{
 						position: 'absolute',
 						top: '50%',
 						left: '50%',
 						transform: 'translate(-50%, -50%)',
 						fontSize: '10em',
 						color: '#979797'
-					}
-				}, 'Loading...')))
-			.when(() => !this.state.existToken, () => React.createElement<IAuthFormProps>(AuthForm, {
-				appKey: this.state.config.appKey,
-				onGetToken: this.onGetToken.bind(this)
-			}))
+					} as any}>Loading...</div>
+			))
+			.when(() => !this.state.existToken, () => <AuthForm
+				appKey={this.state.config.appKey}
+				onGetToken={this.onGetToken.bind(this)}
+			/>)
 			.default(() => fixedContainer({},
-				div({}, React.createElement<IPostFormProps>(PostFrom, {
-					onSubmit: this.updateStatus.bind(this)
-				}))
+				<div>
+					<PostFrom onSubmit={this.updateStatus.bind(this)} />
+				</div>
 			));
 	}
 }
 
-React.render(React.createElement(App), document.getElementById('container'));
+React.render(<App />, document.getElementById('container'));
