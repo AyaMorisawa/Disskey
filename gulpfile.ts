@@ -57,7 +57,7 @@ task('clean', (cb) => {
 	del(['./built', './tmp', './release'], cb);
 });
 
-task('clean-all',['clean'], (cb) => {
+task('clean-all', ['clean'], (cb) => {
 	del(['./node_modules', './typings'], cb);
 })
 
