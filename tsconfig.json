@@ -5,12 +5,13 @@
 		"sourceMap": false,
 		"target": "ES6",
 		"removeComments": true,
-		"noLib": false,
+		"noLib": true,
 		"outDir": "built",
 		"rootDir": "src",
 		"jsx": "react"
 	},
 	"files": [
+		"node_modules/typescript/lib/lib.es6.d.ts",
 		"typings/bundle.d.ts",
 		"src/index.ts",
 		"src/model/misskey.ts",

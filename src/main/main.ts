@@ -5,7 +5,6 @@ import PostFrom, { IPostFormProps } from './PostForm';
 import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../model/config';
 import { Match } from 'satch';
 import fixedContainer from '../fixedContainer';
-let objectAssign: (target: any, ...sources: any[]) => any = require('object-assign');
 
 let { div } = React.DOM;
 
@@ -28,7 +27,7 @@ class App extends React.Component<{}, IAppState> {
 
 	componentDidMount() {
 		loadUserConfig().then(userConfig => {
-			let mergedConfig: IConfig = objectAssign(appConfig, userConfig);
+			let mergedConfig: IConfig = Object.assign(appConfig, userConfig);
 			let existUserKey = mergedConfig.userKey !== void 0;
 			setTimeout(() => {
 				if (existUserKey) {

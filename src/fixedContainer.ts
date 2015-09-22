@@ -1,10 +1,9 @@
 import * as React from 'react';
 let { div } = React.DOM;
-let objectAssign: (target: any, ...sources: any[]) => any = require('object-assign');
 
 function fixedContainer(style: any, ...element: React.ReactElement<any>[]) {
 	return div({
-		style: objectAssign({
+		style: Object.assign({
 			position: 'absolute',
 			top: 0,
 			right: 0,
