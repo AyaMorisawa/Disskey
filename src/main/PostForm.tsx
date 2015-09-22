@@ -21,7 +21,7 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 	onChange(e: any) {
 		this.setState({text: e.target.value});
 	}
-	
+
 	onKeyDownText(e: KeyboardEvent) {
 		if (e.ctrlKey && e.keyCode === 13) {
 			this.onSubmit();
@@ -36,7 +36,7 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 
 	render() {
 		return (
-			<div style={{margin: 32} as any}>
+			<div style={{margin: '0 32px'} as any}>
 				<TextField
 					floatingLabelText="What's happening?"
 					value={this.state.text}
@@ -45,12 +45,18 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 					onKeyDown={this.onKeyDownText.bind(this)}
 					style={{width: '100%'}}
 				/>
-				<RaisedButton
-					onClick={this.onSubmit.bind(this)}
-					linkButton={true}
-					label='Submit'
-					style={{float: 'right'}}
-				/>
+				<div style={{float: 'right', display: 'flex', flexDirection: 'row'} as any}>
+					<div style={{
+						color: 300 - this.state.text.length >= 0 ? 'black' : 'red',
+						lineHeight: '38px',
+						marginRight: 12
+					} as any}>{300 - this.state.text.length}</div>
+					<RaisedButton
+						onClick={this.onSubmit.bind(this)}
+						linkButton={true}
+						label='Submit'
+					/>
+				</div>
 			</div>
 		);
 	}
