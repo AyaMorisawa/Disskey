@@ -6,12 +6,12 @@ export interface IConfig {
 	userKey?: string;
 }
 
-export var appConfig: IConfig = {
+export let appConfig: IConfig = {
 	appKey: 'hmsk.HXLcVOeFfHhKPwZvdKBCgpyyTvtqrDAw'
 };
 
-var userConfigDirPath = path.join((process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME, '.disskey');
-var userConfigFilePath = path.join(userConfigDirPath, 'config.json');
+let userConfigDirPath = path.join((process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME, '.disskey');
+let userConfigFilePath = path.join(userConfigDirPath, 'config.json');
 
 export function loadUserConfig(): Promise<IConfig> {
 	return file.existFile(userConfigFilePath).then((exist: boolean) => {

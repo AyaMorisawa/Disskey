@@ -6,10 +6,10 @@ import * as tslint from 'gulp-tslint';
 import * as shelljs from 'shelljs';
 import * as del from 'del';
 import * as plumber from 'gulp-plumber';
-var notify = require('gulp-notify');
-var babel = require('gulp-babel');
+let notify = require('gulp-notify');
+let babel = require('gulp-babel');
 
-var tsProject = ts.createProject('tsconfig.json', <any>{
+let tsProject = ts.createProject('tsconfig.json', <any>{
 	typescript: require('typescript')
 });
 

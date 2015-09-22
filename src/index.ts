@@ -9,7 +9,7 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-	var mainWindow = new BrowserWindow({
+	let mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
 		title: 'Disskey'

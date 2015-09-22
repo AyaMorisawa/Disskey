@@ -1,8 +1,8 @@
 import * as React from 'react';
 import fixedContainer from '../fixedContainer';
-var mui = require('material-ui');
-var ThemeManager = new mui.Styles.ThemeManager();
-var { RaisedButton, TextField } = mui;
+let mui = require('material-ui');
+let ThemeManager = new mui.Styles.ThemeManager();
+let { RaisedButton, TextField } = mui;
 
 export interface IPostFormProps {
 	onSubmit: (text: string) => void;
@@ -37,7 +37,7 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 	}
 
 	onSubmit() {
-		var text = this.state.text;
+		let text = this.state.text;
 		this.setState({text: ''});
 		this.props.onSubmit(text);
 	}

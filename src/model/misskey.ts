@@ -1,8 +1,8 @@
 import {Options as requestOptions} from 'request';
 import request from './request-promise';
-var open = require('open');
+let open = require('open');
 
-export var baseUrl = 'http://api.misskey.xyz';
+export let baseUrl = 'http://api.misskey.xyz';
 
 export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
 	options.url = `${baseUrl}/${endpoint}`;

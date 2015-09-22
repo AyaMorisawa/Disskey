@@ -1,6 +1,6 @@
 import * as React from 'react';
-var { div } = React.DOM;
-var objectAssign: (target: any, ...sources: any[]) => any = require('object-assign');
+let { div } = React.DOM;
+let objectAssign: (target: any, ...sources: any[]) => any = require('object-assign');
 
 function fixedContainer(style: any, ...element: React.ReactElement<any>[]) {
 	return div({

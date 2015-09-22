@@ -7,7 +7,7 @@ export function writeJsonFile<T>(filePath: string, data: T): void {
 }
 
 export function writeTextFile(filePath: string, data: string): void {
-	var dirPath = path.dirname(filePath);
+	let dirPath = path.dirname(filePath);
 	mkdirp(dirPath, () => fs.writeFile(filePath, data));
 }
 

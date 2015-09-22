@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { SAuth, Token } from '../model/misskey';
 import fixedContainer from '../fixedContainer';
-var mui = require('material-ui');
-var ThemeManager = new mui.Styles.ThemeManager();
-var { RaisedButton, TextField } = mui;
+let mui = require('material-ui');
+let ThemeManager = new mui.Styles.ThemeManager();
+let { RaisedButton, TextField } = mui;
 
 export interface IAuthFormProps {
 	appKey: string;
@@ -45,7 +45,7 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 	}
 
 	onSubmitPincode() {
-		var session = this.state.session;
+		let session = this.state.session;
 		if (session != null) {
 			Token.create(session, this.state.pincode)
 				.then(this.props.onGetToken);
