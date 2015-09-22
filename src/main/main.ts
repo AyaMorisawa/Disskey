@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { Token } from '../model/misskey';
-import IConfig from '../config/IConfig';
-import appConfig from '../config/app';
-import * as userConfigProvider from '../config/user';
 import AuthForm, { IAuthFormProps } from './AuthForm';
 import PostFrom, { IPostFormProps } from './PostForm';
+import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../model/config';
 import { Match } from 'satch';
 import fixedContainer from '../fixedContainer';
 var objectAssign: (target: any, ...sources: any[]) => any = require('object-assign');
@@ -29,7 +27,7 @@ class App extends React.Component<{}, IAppState> {
 	}
 
 	componentDidMount() {
-		userConfigProvider.read().then(userConfig => {
+		loadUserConfig().then(userConfig => {
 			var mergedConfig: IConfig = objectAssign(appConfig, userConfig);
 			var existUserKey = mergedConfig.userKey !== void 0;
 			setTimeout(() => {
@@ -55,9 +53,9 @@ class App extends React.Component<{}, IAppState> {
 			token,
 			existToken: true
 		});
-		userConfigProvider.read().then(userConfig => {
+		loadUserConfig().then(userConfig => {
 			userConfig.userKey = token.userKey;
-			userConfigProvider.write(userConfig);
+			saveUserConfig(userConfig);
 		});
 	}
 
