@@ -7,7 +7,8 @@
 		"removeComments": true,
 		"noLib": false,
 		"outDir": "built",
-		"rootDir": "src"
+		"rootDir": "src",
+		"jsx": "react"
 	},
 	"files": [
 		"typings/bundle.d.ts",

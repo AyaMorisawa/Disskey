@@ -45,6 +45,9 @@
     },
     "request/request.d.ts": {
       "ref": "7a3ca1f0b8a0960af9fc1838f3234cc9d6ce0645"
+    },
+    "gulp-plumber/gulp-plumber.d.ts": {
+      "ref": "09e37435ffb2c56a6f908081194a74756f24f99d"
     }
   }
 }
