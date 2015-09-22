@@ -21,6 +21,12 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 	onChange(e: any) {
 		this.setState({text: e.target.value});
 	}
+	
+	onKeyDownText(e: KeyboardEvent) {
+		if (e.ctrlKey && e.keyCode === 13) {
+			this.onSubmit();
+		}
+	}
 
 	onSubmit() {
 		let text = this.state.text;
@@ -36,6 +42,7 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 					value={this.state.text}
 					multiLine={true}
 					onChange={this.onChange.bind(this)}
+					onKeyDown={this.onKeyDownText.bind(this)}
 					style={{width: '100%'}}
 				/>
 				<RaisedButton
