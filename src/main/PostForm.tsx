@@ -1,7 +1,6 @@
 import * as React from 'react';
 import FixedContainer from './FixedContainer';
 let mui = require('material-ui');
-let ThemeManager = new mui.Styles.ThemeManager();
 let { RaisedButton, TextField } = mui;
 
 export interface IPostFormProps {
@@ -17,16 +16,6 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 		super(props);
 		this.state = {
 			text: ''
-		};
-	}
-
-	static childContextTypes: React.ValidationMap<any> = {
-		muiTheme: React.PropTypes.object
-	};
-
-	getChildContext() {
-		return {
-			muiTheme: ThemeManager.getCurrentTheme()
 		};
 	}
 

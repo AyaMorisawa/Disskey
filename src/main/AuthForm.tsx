@@ -2,7 +2,6 @@ import * as React from 'react';
 import { SAuth, Token } from '../model/misskey';
 import FixedContainer from './FixedContainer';
 let mui = require('material-ui');
-let ThemeManager = new mui.Styles.ThemeManager();
 let { RaisedButton, TextField } = mui;
 
 export interface IAuthFormProps {
@@ -20,16 +19,6 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 		super(props);
 		this.state = {
 			pincode: ''
-		};
-	}
-
-	static childContextTypes: React.ValidationMap<any> = {
-		muiTheme: React.PropTypes.object
-	};
-
-	getChildContext() {
-		return {
-			muiTheme: ThemeManager.getCurrentTheme()
 		};
 	}
 

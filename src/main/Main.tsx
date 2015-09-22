@@ -5,6 +5,8 @@ import PostFrom, { IPostFormProps } from './PostForm';
 import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../model/config';
 import { Match } from 'satch';
 import FixedContainer from './FixedContainer';
+let mui = require('material-ui');
+let ThemeManager = new mui.Styles.ThemeManager();
 
 interface IAppState {
 	token?: Token;
@@ -21,6 +23,16 @@ class App extends React.Component<{}, IAppState> {
 			existToken: false
 		};
 		(window as any).app = this; // debug
+	}
+
+	static childContextTypes: React.ValidationMap<any> = {
+		muiTheme: React.PropTypes.object
+	};
+
+	getChildContext() {
+		return {
+			muiTheme: ThemeManager.getCurrentTheme()
+		};
 	}
 
 	componentDidMount() {
