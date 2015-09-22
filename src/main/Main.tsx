@@ -42,21 +42,20 @@ class App extends React.Component<{}, IAppState> {
 		loadUserConfig().then(userConfig => {
 			let mergedConfig: IConfig = Object.assign(appConfig, userConfig);
 			let existUserKey = mergedConfig.userKey !== void 0;
-			setTimeout(() => {
-				if (existUserKey) {
-					this.setState({
-						ready: true,
-						token: new Token(mergedConfig.appKey, mergedConfig.userKey),
-						existToken: true,
-						config: mergedConfig
-					});
-				} else {
-					this.setState({
-						ready: true,
-						config: mergedConfig
-					});
-				}
-			}, 1000);
+			if (existUserKey) {
+				this.setState({
+					ready: true,
+					token: new Token(mergedConfig.appKey, mergedConfig.userKey),
+					existToken: true,
+					config: mergedConfig
+				});
+			} else {
+				this.setState({
+					ready: true,
+					config: mergedConfig
+				});
+			}
+			remote.getCurrentWindow().show();
 		});
 	}
 
@@ -93,16 +92,7 @@ class App extends React.Component<{}, IAppState> {
 					style={{WebkitAppRegion: 'drag'}} />
 				{
 					new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
-						.when(() => !this.state.ready, () =>
-							<div style={{
-									position: 'absolute',
-									top: '50%',
-									left: '50%',
-									transform: 'translate(-50%, -50%)',
-									fontSize: '10em',
-									color: '#979797'
-								} as any}>Loading...</div>
-						)
+						.when(() => !this.state.ready, () => <div></div>)
 						.when(() => !this.state.existToken, () =>
 							<AuthForm
 								appKey={this.state.config.appKey}

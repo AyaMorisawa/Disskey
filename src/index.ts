@@ -13,7 +13,8 @@ app.on('ready', () => {
 		width: 800,
 		height: 600,
 		title: 'Disskey',
-		frame: false
+		frame: false,
+		show: false
 	});
 
 	mainWindow.on('closed', () => {
