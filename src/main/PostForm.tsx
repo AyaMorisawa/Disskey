@@ -1,5 +1,4 @@
 import * as React from 'react';
-import FixedContainer from './FixedContainer';
 let mui = require('material-ui');
 let { RaisedButton, TextField } = mui;
 
@@ -31,7 +30,7 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 
 	render() {
 		return (
-			<FixedContainer style={{margin: 32}}>
+			<div style={{margin: 32} as any}>
 				<TextField
 					floatingLabelText="What's happening?"
 					value={this.state.text}
@@ -45,7 +44,7 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 					label='Submit'
 					style={{float: 'right'}}
 				/>
-			</FixedContainer>
+			</div>
 		);
 	}
 }

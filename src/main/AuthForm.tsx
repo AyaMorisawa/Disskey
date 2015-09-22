@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { SAuth, Token } from '../model/misskey';
-import FixedContainer from './FixedContainer';
 let mui = require('material-ui');
 let { RaisedButton, TextField } = mui;
 
@@ -43,7 +42,7 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 
 	render() {
 		return (
-			<FixedContainer style={{margin: 32}}>
+			<div style={{margin: 32} as any}>
 				<TextField
 					floatingLabelText='Enter the pincode'
 					value={this.state.pincode}
@@ -56,7 +55,7 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 					label='Submit'
 					style={{float: 'right'}}
 				/>
-			</FixedContainer>
+			</div>
 		);
 	}
 }

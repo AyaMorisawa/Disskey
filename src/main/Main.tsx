@@ -5,8 +5,11 @@ import PostFrom, { IPostFormProps } from './PostForm';
 import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../model/config';
 import { Match } from 'satch';
 import FixedContainer from './FixedContainer';
+let remote = require('remote'); 
 let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
+let { AppBar, IconButton } = mui;
+let NavigationClose = require('material-ui/lib/svg-icons/navigation/close')
 
 interface IAppState {
 	token?: Token;
@@ -71,32 +74,46 @@ class App extends React.Component<{}, IAppState> {
 	updateStatus(text: string) {
 		this.state.token.status.update(text);
 	}
+	
+	onClickCloseButton() {
+		setTimeout(() => remote.getCurrentWindow().close(), 256);
+	}
 
 	render() {
-		return new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
-			.when(() => !this.state.ready, () =>
-				<FixedContainer>
-					<div style={{
-							position: 'absolute',
-							top: '50%',
-							left: '50%',
-							transform: 'translate(-50%, -50%)',
-							fontSize: '10em',
-							color: '#979797'
-						} as any}>Loading...</div>
-				</FixedContainer>
-			)
-			.when(() => !this.state.existToken, () => <AuthForm
-				appKey={this.state.config.appKey}
-				onGetToken={this.onGetToken.bind(this)}
-			/>)
-			.default(() =>
-				<FixedContainer>
-					<div>
-						<PostFrom onSubmit={this.updateStatus.bind(this)} />
-					</div>
-				</FixedContainer>
-			);
+		return (
+			<FixedContainer>
+				<AppBar
+					title='Disskey'
+					showMenuIconButton={false}
+					iconElementRight={
+						<IconButton style={{WebkitAppRegion: 'no-drag'}} onClick={this.onClickCloseButton}>
+							<NavigationClose />
+						</IconButton>
+					}
+					style={{WebkitAppRegion: 'drag'}} />
+				{
+					new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
+						.when(() => !this.state.ready, () =>
+							<div style={{
+									position: 'absolute',
+									top: '50%',
+									left: '50%',
+									transform: 'translate(-50%, -50%)',
+									fontSize: '10em',
+									color: '#979797'
+								} as any}>Loading...</div>
+						)
+						.when(() => !this.state.existToken, () =>
+							<AuthForm
+								appKey={this.state.config.appKey}
+								onGetToken={this.onGetToken.bind(this)} />
+						)
+						.default(() =>
+							<PostFrom onSubmit={this.updateStatus.bind(this)} />
+						)
+				}
+			</FixedContainer>
+		);
 	}
 }
 

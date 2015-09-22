@@ -12,7 +12,8 @@ app.on('ready', () => {
 	let mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
-		title: 'Disskey'
+		title: 'Disskey',
+		frame: false
 	});
 
 	mainWindow.on('closed', () => {
