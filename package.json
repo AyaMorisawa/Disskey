@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "electron-prebuilt": "^0.33.0",
+    "kefir": "^2.8.2",
     "material-ui": "^0.11.0",
     "mkdirp": "^0.5.1",
     "open": "0.0.5",

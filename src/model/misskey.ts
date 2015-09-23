@@ -2,6 +2,7 @@ import {Options as requestOptions} from 'request';
 import request from './request-promise';
 import { appConfig } from './config';
 let open = require('open');
+let Kefir = require('kefir');
 
 export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
 	options.url = `${appConfig.apiBaseUrl}/${endpoint}`;
@@ -90,6 +91,33 @@ export class MisskeyApi {
 }
 
 export class StatusApi extends MisskeyApi {
+	createTimelineStream(): any {
+		return Kefir.stream((emitter: any) => {
+			let isAlive = true;
+			let lastCursor: number = void 0;
+			let f = () => {
+				this.getTimeline({sinceCursor: lastCursor}).then(statuses => {
+					if (statuses.length >= 1) {
+						let sortedStatuses = statuses.sort((a, b) => a.cursor - b.cursor);
+						sortedStatuses.filter(status => lastCursor === void 0 || status.cursor > lastCursor).forEach(emitter.emit);
+						if (lastCursor === void 0 || statuses[statuses.length - 1].cursor > lastCursor) {
+							lastCursor = statuses[statuses.length - 1].cursor;
+						}
+					}
+				}).then(next, next);
+				function next() {
+					if (isAlive) {
+						setTimeout(f, 1000);
+					}
+				}
+			};
+			f();
+			return () => {
+				isAlive = false;
+			};
+		});
+	}
+
 	getTimeline(options: {sinceCursor?: number, maxCursor?: number, count?: number} = {}) {
 		return this.token.callApiWithHeaders<any[]>('status/timeline', {
 			method: 'GET',
