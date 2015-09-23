@@ -18,9 +18,9 @@
 		"src/models/request-promise.ts",
 		"src/models/config.ts",
 		"src/models/file.ts",
-		"src/main/FixedContainer.tsx",
-		"src/main/Main.tsx",
-		"src/main/AuthForm.tsx",
-		"src/main/PostForm.tsx"
+		"src/components/FixedContainer.tsx",
+		"src/components/Main.tsx",
+		"src/components/AuthForm.tsx",
+		"src/components/PostForm.tsx"
 	]
 }
