@@ -112,9 +112,10 @@ export class StatusApi extends MisskeyApi {
 				}
 			};
 			f();
-			return () => {
+			function deactive() {
 				isActive = false;
-			};
+			}
+			return deactive;
 		});
 	}
 
