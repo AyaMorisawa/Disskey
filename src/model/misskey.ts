@@ -112,8 +112,9 @@ export class StatusApi extends MisskeyApi {
 				}).then(next, next);
 
 				function next() {
+					let interval = 1000;
 					if (isActive) {
-						setTimeout(f, 1000);
+						setTimeout(f, interval);
 					}
 				}
 			};
