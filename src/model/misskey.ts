@@ -99,10 +99,14 @@ export class StatusApi extends MisskeyApi {
 				this.getTimeline({sinceCursor: lastCursor}).then(statuses => {
 					if (statuses.length >= 1) {
 						let sortedStatuses = statuses.sort((a, b) => a.cursor - b.cursor);
-						sortedStatuses.filter(status => lastCursor === void 0 || status.cursor > lastCursor).forEach(emitter.emit);
-						if (lastCursor === void 0 || statuses[statuses.length - 1].cursor > lastCursor) {
+						sortedStatuses.filter(isNewStatus).forEach(emitter.emit);
+						if (isNewStatus(statuses[statuses.length - 1])) {
 							lastCursor = statuses[statuses.length - 1].cursor;
 						}
+					}
+
+					function isNewStatus(status: any) {
+						return lastCursor === void 0 || status.cursor > lastCursor;
 					}
 				}).then(next, next);
 				function next() {
