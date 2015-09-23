@@ -15,12 +15,12 @@
 		"typings/bundle.d.ts",
 		"src/index.ts",
 		"src/command.ts",
-		"src/models/misskey.ts",
 		"src/models/request-promise.ts",
-		"src/models/config.ts",
 		"src/models/file.ts",
-		"src/components/FixedContainer.tsx",
+		"src/models/config.ts",
+		"src/models/misskey.ts",
 		"src/components/Main.tsx",
+		"src/components/FixedContainer.tsx",
 		"src/components/AuthForm.tsx",
 		"src/components/PostForm.tsx"
 	]
