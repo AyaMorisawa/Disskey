@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SAuth, Token } from '../model/misskey';
+import { SAuth, Token } from '../models/misskey';
 let mui = require('material-ui');
 let { RaisedButton, TextField } = mui;
 

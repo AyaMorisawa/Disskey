@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Token } from '../model/misskey';
+import { Token } from '../models/misskey';
 import AuthForm, { IAuthFormProps } from './AuthForm';
 import PostFrom, { IPostFormProps } from './PostForm';
-import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../model/config';
+import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../models/config';
 import { Match } from 'satch';
 import FixedContainer from './FixedContainer';
 let remote = require('remote'); 
