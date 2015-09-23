@@ -110,6 +110,7 @@ export class StatusApi extends MisskeyApi {
 						return lastCursor === void 0 || status.cursor > lastCursor;
 					}
 				}).then(next, next);
+
 				function next() {
 					if (isActive) {
 						setTimeout(f, 1000);
