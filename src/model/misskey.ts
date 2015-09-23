@@ -100,8 +100,9 @@ export class StatusApi extends MisskeyApi {
 					if (statuses.length >= 1) {
 						let sortedStatuses = statuses.sort((a, b) => a.cursor - b.cursor);
 						sortedStatuses.filter(isNewStatus).forEach(emitter.emit);
-						if (isNewStatus(statuses[statuses.length - 1])) {
-							lastCursor = statuses[statuses.length - 1].cursor;
+						let lastStatus = statuses[statuses.length - 1];
+						if (isNewStatus(lastStatus)) {
+							lastCursor = lastStatus.cursor;
 						}
 					}
 
