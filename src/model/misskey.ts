@@ -93,7 +93,7 @@ export class MisskeyApi {
 export class StatusApi extends MisskeyApi {
 	createTimelineStream(): any {
 		return Kefir.stream((emitter: any) => {
-			let isAlive = true;
+			let isActive = true;
 			let lastCursor: number = void 0;
 			let f = () => {
 				this.getTimeline({sinceCursor: lastCursor}).then(statuses => {
@@ -106,14 +106,14 @@ export class StatusApi extends MisskeyApi {
 					}
 				}).then(next, next);
 				function next() {
-					if (isAlive) {
+					if (isActive) {
 						setTimeout(f, 1000);
 					}
 				}
 			};
 			f();
 			return () => {
-				isAlive = false;
+				isActive = false;
 			};
 		});
 	}
