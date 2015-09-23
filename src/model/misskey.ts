@@ -91,7 +91,7 @@ export class MisskeyApi {
 
 export class StatusApi extends MisskeyApi {
 	getTimeline(options: {sinceCursor?: number, maxCursor?: number, count?: number} = {}) {
-		return this.token.callApiWithHeaders<any>('status/timeline', {
+		return this.token.callApiWithHeaders<any[]>('status/timeline', {
 			method: 'GET',
 			form: {
 				'since-cursor': typeof options.sinceCursor === 'number' ? options.sinceCursor.toString() : void 0,
