@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('../built/command')
+require('../built/command');
