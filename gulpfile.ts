@@ -65,7 +65,7 @@ task('clean', (cb) => {
 
 task('clean-all', ['clean'], (cb) => {
 	del(['./node_modules', './typings'], cb);
-})
+});
 
 task('test', ['build', 'lint']);
 
