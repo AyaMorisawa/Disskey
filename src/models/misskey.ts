@@ -96,20 +96,22 @@ export class StatusApi extends MisskeyApi {
 			let isActive = true;
 			let lastCursor: number = void 0;
 			let f = () => {
-				this.getTimeline({sinceCursor: lastCursor}).then(statuses => {
-					if (statuses.length >= 1) {
-						let sortedStatuses = statuses.sort((a, b) => a.cursor - b.cursor);
-						sortedStatuses.filter(isNewStatus).forEach(emitter.emit);
-						let lastStatus = statuses[statuses.length - 1];
-						if (isNewStatus(lastStatus)) {
-							lastCursor = lastStatus.cursor;
+				this.getTimeline({sinceCursor: lastCursor})
+					.then(statuses => statuses.sort((a, b) => a.cursor - b.cursor))
+					.then(statuses => {
+						if (statuses.length >= 1) {
+							statuses.filter(isNewStatus).forEach(emitter.emit);
+							let lastStatus = statuses[statuses.length - 1];
+							if (isNewStatus(lastStatus)) {
+								lastCursor = lastStatus.cursor;
+							}
 						}
-					}
 
-					function isNewStatus(status: any) {
-						return lastCursor === void 0 || status.cursor > lastCursor;
-					}
-				}).then(next, next);
+						function isNewStatus(status: any) {
+							return lastCursor === void 0 || status.cursor > lastCursor;
+						}
+					})
+					.then(next, next);
 
 				function next() {
 					let interval = 1000;
