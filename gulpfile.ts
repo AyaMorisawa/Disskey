@@ -23,7 +23,7 @@ task('watch', ['build'], () => {
 	watch('./src/**/*.html', ['build:css']);
 });
 
-task('build', ['build:ts', 'build:html', 'build:css']);
+task('build', ['build:ts', 'build:html', 'build:css', 'build:image']);
 
 task('build:ts', () => {
 	return tsProject.src()
@@ -45,6 +45,10 @@ task('build:css', () => {
 		.pipe(dest('./built'));
 });
 
+task('build:image', () => {
+	return src('./src/images/**/*.png')
+		.pipe(dest('./built/images'));
+});
 
 task('lint', () => {
 	return src('./src/**/*.ts')

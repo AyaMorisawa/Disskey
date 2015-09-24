@@ -13,7 +13,7 @@ app.on('ready', () => {
 		title: 'Disskey',
 		frame: false,
 		show: false,
-		icon: './img/icon.png'
+		icon: './built/images/icon.png'
 	});
 
 	mainWindow.on('closed', () => {
