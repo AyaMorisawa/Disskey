@@ -9,7 +9,7 @@ let remote = require('remote');
 let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
 let { AppBar, IconButton } = mui;
-let NavigationClose = require('material-ui/lib/svg-icons/navigation/close')
+let NavigationClose = require('material-ui/lib/svg-icons/navigation/close');
 
 interface IAppState {
 	token?: Token;
