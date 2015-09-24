@@ -25,6 +25,9 @@ npm install -g disskey
 ## Launch
 Run `disskey` in your terminal.
 
+## Contribute
+Pull requests are welcome.
+
 ## License
 Disskey is licensed under the MIT license.
 See [LICENSE](LICENSE).
