@@ -106,13 +106,11 @@ export class StatusApi extends MisskeyApi {
 								lastCursor = lastStatus.cursor;
 							}
 						}
-
 						function isNewStatus(status: any) {
 							return lastCursor === void 0 || status.cursor > lastCursor;
 						}
 					})
 					.then(next, next);
-
 				function next() {
 					let interval = 1000;
 					if (isActive) {
