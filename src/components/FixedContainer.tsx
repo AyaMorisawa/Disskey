@@ -9,7 +9,7 @@ export default class FixedContainer extends React.Component<{children?: JSX.Elem
 			bottom: 0,
 			left: 0
 		}, this.props.style);
-		
+
 		return (
 			<div style={style}>{this.props.children}</div>
 		);

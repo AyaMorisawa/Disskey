@@ -5,7 +5,7 @@ import PostFrom, { IPostFormProps } from './PostForm';
 import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../models/config';
 import { Match } from 'satch';
 import FixedContainer from './FixedContainer';
-let remote = require('remote'); 
+let remote = require('remote');
 let mui = require('material-ui');
 let ThemeManager = new mui.Styles.ThemeManager();
 let { AppBar, IconButton } = mui;
@@ -73,7 +73,7 @@ class App extends React.Component<{}, IAppState> {
 	updateStatus(text: string) {
 		this.state.token.status.update(text);
 	}
-	
+
 	onClickCloseButton() {
 		setTimeout(() => remote.getCurrentWindow().close(), 256);
 	}
