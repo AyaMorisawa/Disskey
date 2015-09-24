@@ -51,9 +51,11 @@ task('build:image', () => {
 });
 
 task('lint', () => {
-	return src('./src/**/*.ts')
+	return src('./src/**/*.+(ts|tsx)')
 		.pipe(plumber({errorHandler: notify.onError('Lint error: <%= error.message %>')}))
-		.pipe(tslint())
+		.pipe(tslint(<any>{
+			tslint: require('tslint')
+		}))
 		.pipe(tslint.report('verbose'));
 });
 
