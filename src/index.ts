@@ -2,11 +2,9 @@ import * as app from 'app';
 import * as BrowserWindow from 'browser-window';
 import * as Menu from 'menu';
 
-app.on('window-all-closed', () => {
-	if (process.platform !== 'darwin') {
-		app.quit();
-	}
-});
+if (process.platform !== 'darwin') {
+	app.on('window-all-closed', () => app.quit());
+}
 
 app.on('ready', () => {
 	let mainWindow = new BrowserWindow({
