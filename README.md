@@ -25,7 +25,7 @@ npm install -g disskey
 ## Launch
 Run `disskey` in your terminal.
 
-## Contribute
+## Contribution
 Pull requests are welcome.
 
 ## License
