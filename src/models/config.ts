@@ -16,6 +16,7 @@ let userConfigDirPath = path.join((process.platform === 'win32') ? process.env.H
 let userConfigFilePath = path.join(userConfigDirPath, 'config.json');
 
 export function loadUserConfig(): Promise<IConfig> {
+	'use strict';
 	return file.existFile(userConfigFilePath).then(exist => {
 		if (exist) {
 			return file.readJsonFile<IConfig>(userConfigFilePath);
@@ -27,5 +28,6 @@ export function loadUserConfig(): Promise<IConfig> {
 }
 
 export function saveUserConfig(userConfig: IConfig): void {
+	'use strict';
 	file.writeJsonFile(userConfigFilePath, userConfig);
 }

@@ -5,11 +5,13 @@ let open = require('open');
 let Kefir = require('kefir');
 
 export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
+	'use strict';
 	options.url = `${appConfig.apiBaseUrl}/${endpoint}`;
 	return request(options).then(result => <T>JSON.parse(result));
 }
 
 export namespace SAuth {
+	'use strict';
 	export class Session {
 		appKey: string;
 		sessionKey: string;
