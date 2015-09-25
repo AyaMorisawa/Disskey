@@ -18,7 +18,7 @@ interface IAppState {
 	config?: IConfig;
 }
 
-class App extends React.Component<{}, IAppState> {
+export default class App extends React.Component<{}, IAppState> {
 	constructor(props?: {}, context?: any) {
 		super(props, context);
 		this.state = {
@@ -106,5 +106,3 @@ class App extends React.Component<{}, IAppState> {
 		);
 	}
 }
-
-React.render(<App />, document.getElementById('container'));
