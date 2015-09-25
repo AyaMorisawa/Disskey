@@ -34,7 +34,7 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 
 	onSubmitPincode() {
 		let session = this.state.session;
-		if (session != null) {
+		if (session !== void 0) {
 			Token.create(session, this.state.pincode)
 				.then(this.props.onGetToken);
 		}
