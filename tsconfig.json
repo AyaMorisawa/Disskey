@@ -20,7 +20,7 @@
 		"src/models/file.ts",
 		"src/models/config.ts",
 		"src/models/misskey.ts",
-		"src/components/Main.tsx",
+		"src/components/App.tsx",
 		"src/components/FixedContainer.tsx",
 		"src/components/AuthForm.tsx",
 		"src/components/PostForm.tsx"
