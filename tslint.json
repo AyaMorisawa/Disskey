@@ -6,7 +6,8 @@
     "ban": false,
     "class-name": true,
     "comment-format": [true,
-        "check-space"
+        "check-space",
+		"check-upper-case"
     ],
     "curly": true,
     "eofline": true,
@@ -17,6 +18,7 @@
     "label-position": true,
     "label-undefined": true,
     "max-line-length": [true, 140],
+	"member-access": false,
     "member-ordering": [true,
         "public-before-private",
         "static-before-instance",
@@ -32,6 +34,7 @@
         "timeEnd",
         "trace"
     ],
+	"no-consecutive-blank-lines": true,
     "no-construct": true,
     "no-constructor-vars": true,
     "no-debugger": true,
@@ -50,7 +53,7 @@
     "no-unused-expression": true,
     "no-unused-variable": true,
     "no-use-before-declare": true,
-    "no-var-keyword": false,
+    "no-var-keyword": true,
     "no-var-requires": false,
     "one-line": [true,
         "check-open-brace",
@@ -61,8 +64,9 @@
     "quotemark": false,
     "radix": true,
     "semicolon": true,
+	"sort-object-literal-keys": false,
     "switch-default": true,
-    "triple-equals": [true, "allow-null-check"],
+    "triple-equals": true,
     "typedef": false,
     "typedef-whitespace": [true, {
         "call-signature": "nospace",
@@ -71,7 +75,7 @@
         "property-declaration": "nospace",
         "variable-declaration": "nospace"
     }],
-    "use-strict": false,
+    "use-strict": [true, "check-module", "check-function"],
     "variable-name": false,
     "whitespace": [true,
         "check-branch",
