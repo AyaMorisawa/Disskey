@@ -2,7 +2,6 @@ import {Options as requestOptions} from 'request';
 import request from './request-promise';
 import { appConfig } from './config';
 import Z from '../utils/Z';
-const open = require('open');
 const Kefir = require('kefir');
 
 export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
@@ -37,10 +36,6 @@ export namespace SAuth {
 			this.appKey = appKey;
 			this.sessionKey = sessionKey;
 			this.authorizePageUrl = `${appConfig.apiBaseUrl}/authorize@${encodeURIComponent(sessionKey)}`;
-		}
-
-		openAuthorizePage() {
-			open(this.authorizePageUrl);
 		}
 
 		getUserKey(pincode: string) {

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SAuth, Token } from '../models/misskey';
+import { openExternal } from 'shell';
 const { RaisedButton, TextField }  = require('material-ui');
 
 export interface IAuthFormProps {
@@ -23,7 +24,8 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 	componentDidMount() {
 		SAuth.Session.create(this.props.appKey).then(session => {
 			this.setState({session});
-			session.openAuthorizePage();
+			// session.openAuthorizePage();
+			openExternal(session.authorizePageUrl);
 		});
 	}
 
