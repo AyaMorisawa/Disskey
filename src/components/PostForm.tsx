@@ -1,6 +1,5 @@
 import * as React from 'react';
-const mui = require('material-ui');
-const { RaisedButton, TextField } = mui;
+const { RaisedButton, TextField } = require('material-ui');
 
 export interface IPostFormProps {
 	onSubmit: (text: string) => void;

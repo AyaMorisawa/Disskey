@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { SAuth, Token } from '../models/misskey';
-const mui = require('material-ui');
-const { RaisedButton, TextField } = mui;
+const { RaisedButton, TextField }  = require('material-ui');
 
 export interface IAuthFormProps {
 	appKey: string;
