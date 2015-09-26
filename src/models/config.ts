@@ -7,13 +7,13 @@ export interface IConfig {
 	apiBaseUrl?: string;
 }
 
-export let appConfig: IConfig = {
+export const appConfig: IConfig = {
 	appKey: 'hmsk.HXLcVOeFfHhKPwZvdKBCgpyyTvtqrDAw',
 	apiBaseUrl: 'http://api.misskey.xyz'
 };
 
-let userConfigDirPath = path.join((process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME, '.disskey');
-let userConfigFilePath = path.join(userConfigDirPath, 'config.json');
+const userConfigDirPath = path.join((process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME, '.disskey');
+const userConfigFilePath = path.join(userConfigDirPath, 'config.json');
 
 export function loadUserConfig(): Promise<IConfig> {
 	'use strict';
