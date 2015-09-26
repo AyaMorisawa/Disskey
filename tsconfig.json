@@ -25,6 +25,7 @@
 		"src/components/App.tsx",
 		"src/components/FixedContainer.tsx",
 		"src/components/AuthForm.tsx",
-		"src/components/PostForm.tsx"
+		"src/components/PostForm.tsx",
+		"src/utils/Z.ts"
 	]
 }

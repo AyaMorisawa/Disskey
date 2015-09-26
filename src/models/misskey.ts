@@ -1,6 +1,7 @@
 import {Options as requestOptions} from 'request';
 import request from './request-promise';
 import { appConfig } from './config';
+import Z from '../utils/Z';
 let open = require('open');
 let Kefir = require('kefir');
 
@@ -96,7 +97,7 @@ export class StatusApi extends MisskeyApi {
 	timelineStream = Kefir.stream((emitter: any) => {
 		let isActive = true;
 		let lastCursor: number = void 0;
-		let f = () => {
+		Z<number, void>(f => interval => {
 			this.getTimeline({sinceCursor: lastCursor})
 				.then(statuses => statuses.sort((a, b) => a.cursor - b.cursor))
 				.then(statuses => {
@@ -113,13 +114,11 @@ export class StatusApi extends MisskeyApi {
 				})
 				.then(next, next);
 			function next() {
-				let interval = 1000;
 				if (isActive) {
-					setTimeout(f, interval);
+					setTimeout(() => f(interval), interval);
 				}
 			}
-		};
-		f();
+		})(1000);
 		function deactive() {
 			isActive = false;
 		}
