@@ -16,6 +16,7 @@
 		"typings/bundle.d.ts",
 		"src/index.ts",
 		"src/command.ts",
+		"src/models/platform.ts",
 		"src/models/request-promise.ts",
 		"src/models/file.ts",
 		"src/models/config.ts",

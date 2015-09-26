@@ -1,8 +1,9 @@
 import * as app from 'app';
 import * as BrowserWindow from 'browser-window';
 import * as Menu from 'menu';
+import * as platform from './models/platform';
 
-if (process.platform !== 'darwin') {
+if (platform.isOSX) {
 	app.on('window-all-closed', () => app.quit());
 }
 
