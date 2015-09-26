@@ -6,8 +6,9 @@ let Kefir = require('kefir');
 
 export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
 	'use strict';
-	options.url = `${appConfig.apiBaseUrl}/${endpoint}`;
-	return request(options).then(result => <T>JSON.parse(result));
+	return request(Object.assign(options, {
+		url: `${appConfig.apiBaseUrl}/${endpoint}`
+	})).then(result => <T>JSON.parse(result));
 }
 
 export namespace SAuth {
@@ -74,13 +75,12 @@ export class Token {
 	}
 
 	callApiWithHeaders<T>(endpoint: string, options: requestOptions = {}) {
-		if (options.headers === void 0) {
-			options.headers = {};
-		}
-
-		options.headers['sauth-app-key'] = this.appKey;
-		options.headers['sauth-user-key'] = this.userKey;
-		return callApi<T>(endpoint, options);
+		return callApi<T>(endpoint, Object.assign(options, {
+			headers: {
+				'sauth-app-key': this.appKey,
+				'sauth-user-key': this.userKey
+			}
+		}));
 	}
 }
 
