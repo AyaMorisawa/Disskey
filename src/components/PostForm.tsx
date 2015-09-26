@@ -1,6 +1,6 @@
 import * as React from 'react';
-let mui = require('material-ui');
-let { RaisedButton, TextField } = mui;
+const mui = require('material-ui');
+const { RaisedButton, TextField } = mui;
 
 export interface IPostFormProps {
 	onSubmit: (text: string) => void;
@@ -29,7 +29,7 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 	}
 
 	onSubmit() {
-		let text = this.state.text;
+		const text = this.state.text;
 		this.setState({text: ''});
 		this.props.onSubmit(text);
 	}

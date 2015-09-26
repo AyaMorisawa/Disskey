@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export default class FixedContainer extends React.Component<{children?: JSX.Element, style?: any}, {}> {
 	render() {
-		let style = Object.assign({
+		const style = Object.assign({
 			position: 'absolute',
 			top: 0,
 			right: 0,

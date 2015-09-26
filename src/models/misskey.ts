@@ -2,8 +2,8 @@ import {Options as requestOptions} from 'request';
 import request from './request-promise';
 import { appConfig } from './config';
 import Z from '../utils/Z';
-let open = require('open');
-let Kefir = require('kefir');
+const open = require('open');
+const Kefir = require('kefir');
 
 export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
 	'use strict';
@@ -103,7 +103,7 @@ export class StatusApi extends MisskeyApi {
 				.then(statuses => {
 					if (statuses.length >= 1) {
 						statuses.filter(isNewStatus).forEach(emitter.emit);
-						let lastStatus = statuses[statuses.length - 1];
+						const lastStatus = statuses[statuses.length - 1];
 						if (isNewStatus(lastStatus)) {
 							lastCursor = lastStatus.cursor;
 						}

@@ -5,11 +5,11 @@ import PostFrom from './PostForm';
 import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../models/config';
 import { Match } from 'satch';
 import FixedContainer from './FixedContainer';
-let remote = require('remote');
-let mui = require('material-ui');
-let ThemeManager = new mui.Styles.ThemeManager();
-let { AppBar, IconButton } = mui;
-let NavigationClose = require('material-ui/lib/svg-icons/navigation/close');
+const remote = require('remote');
+const mui = require('material-ui');
+const ThemeManager = new mui.Styles.ThemeManager();
+const { AppBar, IconButton } = mui;
+const NavigationClose = require('material-ui/lib/svg-icons/navigation/close');
 
 interface IAppState {
 	token?: Token;
@@ -40,8 +40,8 @@ export default class App extends React.Component<{}, IAppState> {
 
 	componentDidMount() {
 		loadUserConfig().then(userConfig => {
-			let mergedConfig: IConfig = Object.assign(appConfig, userConfig);
-			let existUserKey = mergedConfig.userKey !== void 0;
+			const mergedConfig: IConfig = Object.assign(appConfig, userConfig);
+			const existUserKey = mergedConfig.userKey !== void 0;
 			if (existUserKey) {
 				this.setState({
 					ready: true,
