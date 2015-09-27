@@ -20,7 +20,7 @@ task('start', () => {
 task('watch', ['build', 'lint'], () => {
 	watch('./src/**/*.+(ts|tsx)', ['build:ts', 'lint']);
 	watch('./src/**/*.html', ['build:html']);
-	watch('./src/**/*.html', ['build:css']);
+	watch('./src/**/*.css', ['build:css']);
 });
 
 task('build', ['build:ts', 'build:html', 'build:css', 'build:image']);
