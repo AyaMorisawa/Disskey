@@ -88,33 +88,34 @@ export default class App extends React.Component<{}, IAppState> {
 					createdAt: new Date(post.createdAt)
 				};
 			}))
-			.then(posts => this.setState({
-				timeline: this.state.timeline.concat(posts)
-			}));
-
-		token.status.createStream()
-			.filter(x => x.event === 'status-update')
-			.map(x => x.data)
-			.withHandler<IPostProps, {}>((emitter, event) => {
-				if (event.type === 'value') {
-					const post = event.value;
-					token.users.showById(post.userId)
-						.then(user => {
-							return {
-								id: post.id,
-								text: post.text,
-								userId: post.userId,
-								userName: user.name,
-								userScreenName: user.screenName,
-								createdAt: new Date(post.createdAt)
-							};
-						})
-						.then(emitter.emit);
-				}
-			})
-			.onValue(post => this.setState({
-					timeline: this.state.timeline.concat([post])
-			}));
+			.then(posts => {
+				this.setState({
+					timeline: this.state.timeline.concat(posts)
+				});
+				token.status.createStream()
+					.filter(x => x.event === 'status-update')
+					.map(x => x.data)
+					.withHandler<IPostProps, {}>((emitter, event) => {
+						if (event.type === 'value') {
+							const post = event.value;
+							token.users.showById(post.userId)
+								.then(user => {
+									return {
+										id: post.id,
+										text: post.text,
+										userId: post.userId,
+										userName: user.name,
+										userScreenName: user.screenName,
+										createdAt: new Date(post.createdAt)
+									};
+								})
+								.then(emitter.emit);
+						}
+					})
+					.onValue(post => this.setState({
+							timeline: this.state.timeline.concat([post])
+					}));
+			});
 	}
 
 	render() {
