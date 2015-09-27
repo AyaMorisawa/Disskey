@@ -48,6 +48,9 @@
     },
     "kefir/kefir.d.ts": {
       "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
+    },
+    "ws/ws.d.ts": {
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     }
   }
 }

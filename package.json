@@ -44,7 +44,8 @@
     "react-tap-event-plugin": "^0.1.7",
     "request": "^2.61.0",
     "satch": "^0.1.10",
-    "shelljs": "^0.5.3"
+    "shelljs": "^0.5.3",
+    "ws": "^0.8.0"
   },
   "private": false
 }

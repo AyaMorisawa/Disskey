@@ -3,6 +3,7 @@ import request from './request-promise';
 import { appConfig } from './config';
 import Z from '../utils/Z';
 import * as Kefir from 'kefir';
+import * as WebSocket from 'ws';
 
 export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
 	'use strict';
@@ -89,6 +90,19 @@ export class MisskeyApi {
 }
 
 export class StatusApi extends MisskeyApi {
+	createStream() {
+		return Kefir.stream<any, any>(emitter => {
+			const socket = new WebSocket('ws://misskey.xyz:3001', {
+				headers: {
+					'sauth-app-key': this.token.appKey,
+					'sauth-user-key': this.token.userKey
+				}
+			});
+			socket.on('message', emitter.emit);
+			return () => socket.close();
+		}).map(JSON.parse);
+	}
+
 	createTimelineIntervalStream(lastCursor?: number) {
 		return Kefir.stream(emitter => {
 			let isActive = true;
