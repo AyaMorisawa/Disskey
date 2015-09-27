@@ -8,6 +8,7 @@ import * as del from 'del';
 import * as plumber from 'gulp-plumber';
 const notify = require('gulp-notify');
 const babel = require('gulp-babel');
+const stylus = require('gulp-stylus');
 
 const tsProject = ts.createProject('tsconfig.json', <any>{
 	typescript: require('typescript')
@@ -20,10 +21,10 @@ task('start', () => {
 task('watch', ['build', 'lint'], () => {
 	watch('./src/**/*.+(ts|tsx)', ['build:ts', 'lint']);
 	watch('./src/**/*.html', ['build:html']);
-	watch('./src/**/*.css', ['build:css']);
+	watch('./src/**/*.styl', ['build:stylus']);
 });
 
-task('build', ['build:ts', 'build:html', 'build:css', 'build:image']);
+task('build', ['build:ts', 'build:html', 'build:stylus', 'build:image']);
 
 task('build:ts', () => {
 	return tsProject.src()
@@ -40,8 +41,9 @@ task('build:html', () => {
 		.pipe(dest('./built'));
 });
 
-task('build:css', () => {
-	return src('./src/**/*.css')
+task('build:stylus', () => {
+	return src('./src/**/*.styl')
+		.pipe(stylus())
 		.pipe(dest('./built'));
 });
 
