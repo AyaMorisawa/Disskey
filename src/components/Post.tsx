@@ -14,11 +14,11 @@ export interface IPostProps {
 
 export default class Post extends React.Component<IPostProps, {}> {
 	render() {
-		const imageUrl = `http://img.misskey.xyz/contents/user-contents/user/${this.props.userId}/icon/${this.props.userId}.jpg`;
+		const userIconUrl = `http://img.misskey.xyz/contents/user-contents/user/${this.props.userId}/icon/${this.props.userId}.jpg`;
 		return (
 			<div style={this.props.style}>
 				<div style={{display: 'flex'} as any}>
-					<img style={{flexBasis: '64px'} as any} width="64" height="64" src={imageUrl} />
+					<img style={{flexBasis: '64px'} as any} width="64" height="64" src={userIconUrl} />
 					<div style={{padding: '0 16px', flex: 1} as any}>
 						<div style={{display: 'flex', lineHeight: '24px'} as any}>
 							<div style={{fontWeight: 'bold'} as any}>{this.props.userScreenName}</div>
