@@ -2,7 +2,7 @@ import {Options as requestOptions} from 'request';
 import request from './request-promise';
 import { appConfig } from './config';
 import Z from '../utils/Z';
-const Kefir = require('kefir');
+import * as Kefir from 'kefir';
 
 export function callApi<T>(endpoint: string, options: requestOptions = {}): Promise<T> {
 	'use strict';
@@ -90,7 +90,7 @@ export class MisskeyApi {
 
 export class StatusApi extends MisskeyApi {
 	createTimelineIntervalStream(lastCursor?: number) {
-		return Kefir.stream((emitter: any) => {
+		return Kefir.stream(emitter => {
 			let isActive = true;
 			Z<number, void>(f => interval => {
 				this.getTimeline({sinceCursor: lastCursor})
