@@ -89,7 +89,7 @@ export class MisskeyApi {
 }
 
 export class StatusApi extends MisskeyApi {
-	createTimelineStream(lastCursor?: number) {
+	createTimelineIntervalStream(lastCursor?: number) {
 		return Kefir.stream((emitter: any) => {
 			let isActive = true;
 			Z<number, void>(f => interval => {
