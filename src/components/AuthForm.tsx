@@ -43,7 +43,7 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 
 	render() {
 		return (
-			<div style={{margin: '0 32px'} as any}>
+			<div>
 				<TextField
 					floatingLabelText='Enter the pincode'
 					value={this.state.pincode}

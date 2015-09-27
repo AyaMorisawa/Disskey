@@ -35,7 +35,7 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 
 	render() {
 		return (
-			<div style={{margin: '0 32px'} as any}>
+			<div>
 				<TextField
 					floatingLabelText="What's happening?"
 					value={this.state.text}
