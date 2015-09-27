@@ -90,7 +90,7 @@ export default class App extends React.Component<{}, IAppState> {
 						</IconButton>
 					}
 					style={{WebkitAppRegion: 'drag'}} />
-				<div style={{margin: '0 32px'} as any}>{
+				<FixedContainer style={{top: '64px', padding: '0 32px', overflowY: 'scroll'} as any}>{
 					new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
 						.when(() => !this.state.ready, () => <div></div>)
 						.when(() => !this.state.existToken, () =>
@@ -101,7 +101,7 @@ export default class App extends React.Component<{}, IAppState> {
 						.default(() =>
 							<PostFrom onSubmit={this.updateStatus.bind(this)} />
 						)
-				}</div>
+				}</FixedContainer>
 			</FixedContainer>
 		);
 	}
