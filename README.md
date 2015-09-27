@@ -29,5 +29,5 @@ Run `disskey` in your terminal.
 Pull requests are welcome.
 
 ## License
-Disskey is licensed under the MIT license.
+The MIT license.
 See [LICENSE](LICENSE).
