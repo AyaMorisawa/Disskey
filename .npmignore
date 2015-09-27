@@ -3,10 +3,10 @@
 /typings
 npm-debug.log
 /tmp
+/.vscode
 /.travis.yml
 /dtsm.json
 /gulpfile.ts
 /tsconfig.json
 /tslint.json
-/.vscode
 /.npmignore
