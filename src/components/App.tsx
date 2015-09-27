@@ -8,9 +8,8 @@ import { Match } from 'satch';
 import FixedContainer from './FixedContainer';
 import { IPostProps } from './Post';
 const remote = require('remote');
-const mui = require('material-ui');
-const ThemeManager = new mui.Styles.ThemeManager();
-const { AppBar, IconButton } = mui;
+const { AppBar, IconButton, Styles } = require('material-ui');
+const { ThemeManager, ThemeDecorator } = Styles;
 const NavigationClose = require('material-ui/lib/svg-icons/navigation/close');
 
 interface IAppState {
@@ -21,6 +20,7 @@ interface IAppState {
 	timeline?: IPostProps[];
 }
 
+@ThemeDecorator(ThemeManager.getMuiTheme(Styles.LightRawTheme))
 export default class App extends React.Component<{}, IAppState> {
 	constructor(props?: {}, context?: any) {
 		super(props, context);
@@ -30,16 +30,6 @@ export default class App extends React.Component<{}, IAppState> {
 			timeline: []
 		};
 		(window as any).app = this; // debug
-	}
-
-	static childContextTypes: React.ValidationMap<any> = {
-		muiTheme: React.PropTypes.object
-	};
-
-	getChildContext() {
-		return {
-			muiTheme: ThemeManager.getCurrentTheme()
-		};
 	}
 
 	componentDidMount() {

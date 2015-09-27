@@ -9,7 +9,8 @@
 		"noLib": true,
 		"outDir": "built",
 		"rootDir": "src",
-		"jsx": "react"
+		"jsx": "react",
+		"experimentalDecorators": true
 	},
 	"files": [
 		"node_modules/typescript/lib/lib.es6.d.ts",
