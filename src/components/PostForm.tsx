@@ -44,17 +44,17 @@ export default class PostForm extends React.Component<IPostFormProps, IPostFormS
 					onKeyDown={this.onKeyDownText.bind(this)}
 					style={{width: '100%'}}
 				/>
-				<div style={{float: 'right', display: 'flex', flexDirection: 'row'} as any}>
-					<div style={{
-						color: 300 - this.state.text.length >= 0 ? 'black' : 'red',
-						lineHeight: '38px',
-						marginRight: 12
-					} as any}>{300 - this.state.text.length}</div>
+				<div style={{display: 'flex', flexDirection: 'row-reverse'} as any}>
 					<RaisedButton
 						onClick={this.onSubmit.bind(this)}
 						linkButton={true}
 						label='Submit'
 					/>
+					<div style={{
+						color: 300 - this.state.text.length >= 0 ? 'black' : 'red',
+						lineHeight: '38px',
+						marginRight: 12
+					} as any}>{300 - this.state.text.length}</div>
 				</div>
 			</div>
 		);
