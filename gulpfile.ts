@@ -74,7 +74,3 @@ task('clean-all', ['clean'], (cb) => {
 });
 
 task('test', ['build', 'lint']);
-
-task('release', () => {
-	shelljs.exec('electron-packager ./ disskey --all --version=0.33.0 --out=release --ignore=src --overwrite');
-});
