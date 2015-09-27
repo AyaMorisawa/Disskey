@@ -89,36 +89,37 @@ export class MisskeyApi {
 }
 
 export class StatusApi extends MisskeyApi {
-	timelineStream = Kefir.stream((emitter: any) => {
-		let isActive = true;
-		let lastCursor: number = void 0;
-		Z<number, void>(f => interval => {
-			this.getTimeline({sinceCursor: lastCursor})
-				.then(statuses => statuses.sort((a, b) => a.cursor - b.cursor))
-				.then(statuses => {
-					if (statuses.length >= 1) {
-						statuses.filter(isNewStatus).forEach(emitter.emit);
-						const lastStatus = statuses[statuses.length - 1];
-						if (isNewStatus(lastStatus)) {
-							lastCursor = lastStatus.cursor;
+	createTimelineStream(lastCursor?: number) {
+		return Kefir.stream((emitter: any) => {
+			let isActive = true;
+			Z<number, void>(f => interval => {
+				this.getTimeline({sinceCursor: lastCursor})
+					.then(statuses => statuses.sort((a, b) => a.cursor - b.cursor))
+					.then(statuses => {
+						if (statuses.length >= 1) {
+							statuses.filter(isNewStatus).forEach(emitter.emit);
+							const lastStatus = statuses[statuses.length - 1];
+							if (isNewStatus(lastStatus)) {
+								lastCursor = lastStatus.cursor;
+							}
 						}
+						function isNewStatus(status: any) {
+							return lastCursor === void 0 || status.cursor > lastCursor;
+						}
+					})
+					.then(next, next);
+				function next() {
+					if (isActive) {
+						setTimeout(() => f(interval), interval);
 					}
-					function isNewStatus(status: any) {
-						return lastCursor === void 0 || status.cursor > lastCursor;
-					}
-				})
-				.then(next, next);
-			function next() {
-				if (isActive) {
-					setTimeout(() => f(interval), interval);
 				}
+			})(1000);
+			function deactive() {
+				isActive = false;
 			}
-		})(1000);
-		function deactive() {
-			isActive = false;
-		}
-		return deactive;
-	});
+			return deactive;
+		});
+	}
 
 	getTimeline(options: {sinceCursor?: number, maxCursor?: number, count?: number} = {}) {
 		return this.token.callApiWithHeaders<any[]>('status/timeline', {
