@@ -100,7 +100,7 @@ export class StatusApi extends MisskeyApi {
 			});
 			socket.on('message', emitter.emit);
 			return () => socket.close();
-		}).map(JSON.parse);
+		}).map<{ event: string, data: any }>(JSON.parse);
 	}
 
 	createTimelineIntervalStream(lastCursor?: number) {
