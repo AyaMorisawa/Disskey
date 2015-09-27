@@ -91,7 +91,7 @@ export class MisskeyApi {
 
 export class StatusApi extends MisskeyApi {
 	createStream() {
-		return Kefir.stream<any, any>(emitter => {
+		return Kefir.stream<any, void>(emitter => {
 			const socket = new WebSocket('ws://misskey.xyz:3001', {
 				headers: {
 					'sauth-app-key': this.token.appKey,
