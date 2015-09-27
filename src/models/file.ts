@@ -31,7 +31,7 @@ export function existFile(filePath: string) {
 
 export function readJsonFile<T>(filePath: string): Promise<T> {
 	'use strict';
-	return readTextFile(filePath).then(data => JSON.parse(data));
+	return readTextFile(filePath).then(JSON.parse);
 }
 
 export function readTextFile(filePath: string): Promise<string> {

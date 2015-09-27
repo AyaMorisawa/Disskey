@@ -8,7 +8,7 @@ export function callApi<T>(endpoint: string, options: requestOptions = {}): Prom
 	'use strict';
 	return request(Object.assign(options, {
 		url: `${appConfig.apiBaseUrl}/${endpoint}`
-	})).then(result => <T>JSON.parse(result));
+	})).then<T>(JSON.parse);
 }
 
 export namespace SAuth {
