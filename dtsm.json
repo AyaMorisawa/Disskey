@@ -14,37 +14,37 @@
   },
   "dependencies": {
     "node/node.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "react/react.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "github-electron/github-electron-main.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "gulp/gulp.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "gulp-typescript/gulp-typescript.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "gulp-tslint/gulp-tslint.d.ts": {
-      "ref": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "shelljs/shelljs.d.ts": {
-      "ref": "67605e10f6eb01c9d4a0d13719d804d6dea9e1cb"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "del/del.d.ts": {
-      "ref": "67605e10f6eb01c9d4a0d13719d804d6dea9e1cb"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "mkdirp/mkdirp.d.ts": {
-      "ref": "7c228c09302f51d19b6b93fcfc5decaf8e8bbaa2"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "request/request.d.ts": {
-      "ref": "7a3ca1f0b8a0960af9fc1838f3234cc9d6ce0645"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "gulp-plumber/gulp-plumber.d.ts": {
-      "ref": "09e37435ffb2c56a6f908081194a74756f24f99d"
+      "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
     },
     "kefir/kefir.d.ts": {
       "ref": "b937e64fc9245d299fa4ba26c6eddbeaed42a920"
