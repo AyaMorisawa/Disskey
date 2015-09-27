@@ -82,6 +82,7 @@ export default class App extends React.Component<{}, IAppState> {
 				return {
 					id: post.id,
 					text: post.text,
+					imageUrls: post.imageUrls,
 					userId: post.userId,
 					userName: post.user.name,
 					userScreenName: post.user.screenName,
@@ -103,6 +104,7 @@ export default class App extends React.Component<{}, IAppState> {
 									return {
 										id: post.id,
 										text: post.text,
+										imageUrls: post.imageUrls,
 										userId: post.userId,
 										userName: user.name,
 										userScreenName: user.screenName,

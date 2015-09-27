@@ -6,6 +6,7 @@ export interface IPostProps {
 	style?: any;
 	id: string;
 	text: string;
+	imageUrls: string[];
 	userId: string;
 	userName: string;
 	userScreenName: string;
@@ -25,6 +26,11 @@ export default class Post extends React.Component<IPostProps, {}> {
 							<div style={{margin: '0 8px', color: 'gray'} as any}>{this.props.userName}</div>
 						</div>
 						<div style={{margin: '4px 0', whiteSpace: 'pre', wordWrap: 'break-word'} as any}>{this.props.text}</div>
+						<div>{
+							this.props.imageUrls.map(imageUrl => (
+								<img style={{maxHeight: '128px'} as any} src={imageUrl} />
+							))
+						}</div>
 					</div>
 				</div>
 				<div style={{padding: '0 16px 0 80px', color: 'gray'} as any}>{
