@@ -25,6 +25,7 @@
     "electron-packager": "^5.0.2",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.2.1",
+    "gulp-jade": "^1.1.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-stylus": "^2.0.7",
