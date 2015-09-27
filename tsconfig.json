@@ -26,6 +26,9 @@
 		"src/components/FixedContainer.tsx",
 		"src/components/AuthForm.tsx",
 		"src/components/PostForm.tsx",
-		"src/utils/Z.ts"
+		"src/components/Post.tsx",
+		"src/components/Timeline.tsx",
+		"src/utils/Z.ts",
+		"src/utils/padString.ts"
 	]
 }

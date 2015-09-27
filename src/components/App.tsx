@@ -2,9 +2,11 @@ import * as React from 'react';
 import { Token } from '../models/misskey';
 import AuthForm, { IAuthFormProps } from './AuthForm';
 import PostFrom from './PostForm';
+import Timeline from './Timeline';
 import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../models/config';
 import { Match } from 'satch';
 import FixedContainer from './FixedContainer';
+import { IPostProps } from './Post';
 const remote = require('remote');
 const mui = require('material-ui');
 const ThemeManager = new mui.Styles.ThemeManager();
@@ -16,6 +18,7 @@ interface IAppState {
 	ready?: boolean;
 	existToken?: boolean;
 	config?: IConfig;
+	timeline?: IPostProps[];
 }
 
 export default class App extends React.Component<{}, IAppState> {
@@ -23,7 +26,8 @@ export default class App extends React.Component<{}, IAppState> {
 		super(props, context);
 		this.state = {
 			ready: false,
-			existToken: false
+			existToken: false,
+			timeline: []
 		};
 		(window as any).app = this; // debug
 	}
@@ -49,6 +53,7 @@ export default class App extends React.Component<{}, IAppState> {
 					existToken: true,
 					config: mergedConfig
 				});
+				this.startTimeline();
 			} else {
 				this.setState({
 					ready: true,
@@ -64,6 +69,7 @@ export default class App extends React.Component<{}, IAppState> {
 			token,
 			existToken: true
 		});
+		this.startTimeline();
 		loadUserConfig().then(userConfig => {
 			userConfig.userKey = token.userKey;
 			saveUserConfig(userConfig);
@@ -76,6 +82,49 @@ export default class App extends React.Component<{}, IAppState> {
 
 	onClickCloseButton() {
 		setTimeout(() => remote.getCurrentWindow().close(), 256);
+	}
+
+	startTimeline() {
+		const token = this.state.token;
+		token.status.getTimeline()
+			.then(x => x.reverse())
+			.then<IPostProps[]>(posts => posts.map(post => {
+				return {
+					id: post.id,
+					text: post.text,
+					userId: post.userId,
+					userName: post.user.name,
+					userScreenName: post.user.screenName,
+					createdAt: new Date(post.createdAt)
+				};
+			}))
+			.then(posts => this.setState({
+				timeline: this.state.timeline.concat(posts)
+			}));
+
+		token.status.createStream()
+			.filter(x => x.event === 'status-update')
+			.map(x => x.data)
+			.withHandler<IPostProps, {}>((emitter, event) => {
+				if (event.type === 'value') {
+					const post = event.value;
+					token.users.showById(post.userId)
+						.then(user => {
+							return {
+								id: post.id,
+								text: post.text,
+								userId: post.userId,
+								userName: user.name,
+								userScreenName: user.screenName,
+								createdAt: new Date(post.createdAt)
+							};
+						})
+						.then(emitter.emit);
+				}
+			})
+			.onValue(post => this.setState({
+					timeline: this.state.timeline.concat([post])
+			}));
 	}
 
 	render() {
@@ -99,7 +148,10 @@ export default class App extends React.Component<{}, IAppState> {
 								onGetToken={this.onGetToken.bind(this)} />
 						)
 						.default(() =>
-							<PostFrom onSubmit={this.updateStatus.bind(this)} />
+							<div>
+								<PostFrom onSubmit={this.updateStatus.bind(this)} />
+								<Timeline style={{padding: '0 0'} as any} posts={this.state.timeline}/>
+							</div>
 						)
 				}</FixedContainer>
 			</FixedContainer>

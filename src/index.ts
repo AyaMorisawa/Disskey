@@ -11,7 +11,7 @@ app.on('ready', () => {
 	let mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
-		'min-width': 200,
+		'min-width': 300,
 		'min-height': 200,
 		title: 'Disskey',
 		frame: false,
