@@ -5,8 +5,6 @@ Disskey
 
 Misskey client for desktop
 
-This project is being developed and is an experiment more than anything else now.
-
 ## Installation
 
 ### From npm
