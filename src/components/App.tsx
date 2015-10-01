@@ -91,7 +91,7 @@ export default class App extends React.Component<{}, IAppState> {
 			}))
 			.then(posts => {
 				this.setState({
-					timeline: this.state.timeline.concat(posts)
+					timeline: [...this.state.timeline, ...posts]
 				});
 				token.status.createStream()
 					.filter(x => x.event === 'status-update')
@@ -115,7 +115,7 @@ export default class App extends React.Component<{}, IAppState> {
 						}
 					})
 					.onValue(post => this.setState({
-							timeline: this.state.timeline.concat([post])
+							timeline: [...this.state.timeline, post]
 					}));
 			});
 	}
