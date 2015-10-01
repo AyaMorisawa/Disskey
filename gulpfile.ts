@@ -52,7 +52,7 @@ task('build:stylus', () => {
 });
 
 task('build:image', () => {
-	return src('./src/images/**/*.png')
+	return src('./src/images/**/*')
 		.pipe(dest('./built/images'));
 });
 
