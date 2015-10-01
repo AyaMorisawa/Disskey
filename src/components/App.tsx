@@ -3,7 +3,7 @@ import { Token } from '../models/misskey';
 import AuthForm, { IAuthFormProps } from './AuthForm';
 import PostFrom from './PostForm';
 import Timeline from './Timeline';
-import { IConfig, appConfig, loadUserConfig, saveUserConfig } from '../models/config';
+import { IConfig, updateUserConfig, createConfigProperty } from '../models/config';
 import { Match } from 'satch';
 import FixedContainer from './FixedContainer';
 import { IPostProps } from './Post';
@@ -33,25 +33,33 @@ export default class App extends React.Component<{}, IAppState> {
 	}
 
 	componentDidMount() {
-		loadUserConfig().then(userConfig => {
-			const mergedConfig: IConfig = Object.assign(appConfig, userConfig);
-			const existUserKey = mergedConfig.userKey !== void 0;
-			if (existUserKey) {
-				this.setState({
-					ready: true,
-					token: new Token(mergedConfig.appKey, mergedConfig.userKey),
-					existToken: true,
-					config: mergedConfig
-				});
-				this.startTimeline();
-			} else {
-				this.setState({
-					ready: true,
-					config: mergedConfig
-				});
-			}
-			remote.getCurrentWindow().show();
+		createConfigProperty().then(configProperty => {
+			configProperty.onValue(config => {
+				const existUserKey = config.userKey !== void 0;
+				if (existUserKey) {
+					this.setState({
+						ready: true,
+						token: new Token(config.appKey, config.userKey),
+						existToken: true,
+						config: config
+					});
+				} else {
+					this.setState({
+						ready: true,
+						config: config
+					});
+				}
+			});
 		});
+	}
+
+	componentDidUpdate(prevProps: {}, prevState: IAppState) {
+		if (!prevState.ready && this.state.ready) {
+			remote.getCurrentWindow().show();
+		}
+		if (!prevState.existToken && this.state.existToken) {
+			this.startTimeline();
+		}
 	}
 
 	onGetToken(token: Token) {
@@ -59,11 +67,7 @@ export default class App extends React.Component<{}, IAppState> {
 			token,
 			existToken: true
 		});
-		this.startTimeline();
-		loadUserConfig().then(userConfig => {
-			userConfig.userKey = token.userKey;
-			saveUserConfig(userConfig);
-		});
+		updateUserConfig({ userKey: token.userKey });
 	}
 
 	updateStatus(text: string) {

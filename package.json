@@ -36,6 +36,7 @@
     "typescript-require": "^0.2.9"
   },
   "dependencies": {
+    "chokidar": "^1.1.0",
     "electron-prebuilt": "^0.33.3",
     "fbjs": "^0.2.1",
     "fs-extra": "^0.24.0",

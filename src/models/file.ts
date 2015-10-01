@@ -1,4 +1,6 @@
 import * as fs from 'fs-extra';
+import * as Kefir from 'kefir';
+import * as chokidar from 'chokidar';
 
 export function outputJson<T>(file: string, object: T) {
 	'use strict';
@@ -33,4 +35,9 @@ export function readJson<T>(file: string) {
 			}
 		});
 	});
+}
+
+export function watch(fileDirOrGlob: string) {
+	'use strict';
+	return Kefir.fromEvents<string, void>(chokidar.watch(fileDirOrGlob), 'change');
 }
