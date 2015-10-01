@@ -20,6 +20,11 @@ npm install -g disskey
 5. `npm run build`
 6. `sudo npm link`
 
+### From releases
+Executable file is available, but we don't recommend to use because it's *NOT SUPPORTED*.
+
+https://github.com/AyaMorisawa/Disskey/releases
+
 ## Launch
 Run `disskey` in your terminal.
 
