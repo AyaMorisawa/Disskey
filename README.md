@@ -29,7 +29,7 @@ https://github.com/AyaMorisawa/Disskey/releases
 Run `disskey` in your terminal.
 
 ## Contribution
-Pull requests are welcome.
+We appreciate your pull requests.
 
 ## License
 The MIT license.
