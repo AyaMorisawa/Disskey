@@ -10,6 +10,7 @@ const notify = require('gulp-notify');
 const babel = require('gulp-babel');
 const stylus = require('gulp-stylus');
 const jade = require('gulp-jade');
+const electron = require('gulp-atom-electron');
 
 const tsProject = ts.createProject('tsconfig.json', <any>{
 	typescript: require('typescript')
@@ -71,6 +72,77 @@ task('clean', (cb) => {
 
 task('clean-all', ['clean'], (cb) => {
 	del(['./node_modules', './typings'], cb);
+});
+
+task('release', [
+	'release:linux-ia32',
+	'release:linux-x64',
+	'release:linux-arm',
+	'release:win32-ia32',
+	'release:win32-x64',
+	'release:darwin-x64',
+]);
+
+const filesToRelease = ['./**'];
+
+task('release:linux-ia32', () => {
+	return src(filesToRelease)
+		.pipe(electron({
+			version: '0.33.3',
+			platform: 'linux',
+			arch: 'ia32'
+		}))
+		.pipe(electron.zfsdest('./release/disskey-linux-ia32.zip'))
+});
+
+task('release:linux-x64', () => {
+	return src(filesToRelease)
+		.pipe(electron({
+			version: '0.33.3',
+			platform: 'linux',
+			arch: 'x64'
+		}))
+		.pipe(electron.zfsdest('./release/disskey-linux-x64.zip'))
+});
+
+task('release:linux-arm', () => {
+	return src(filesToRelease)
+		.pipe(electron({
+			version: '0.33.3',
+			platform: 'linux',
+			arch: 'arm'
+		}))
+		.pipe(electron.zfsdest('./release/disskey-linux-arm.zip'))
+});
+
+task('release:win32-ia32', () => {
+	return src(filesToRelease)
+		.pipe(electron({
+			version: '0.33.3',
+			platform: 'win32',
+			arch: 'ia32'
+		}))
+		.pipe(electron.zfsdest('./release/disskey-win32-ia32.zip'))
+});
+
+task('release:win32-x64', () => {
+	return src(filesToRelease)
+		.pipe(electron({
+			version: '0.33.3',
+			platform: 'win32',
+			arch: 'x64'
+		}))
+		.pipe(electron.zfsdest('./release/disskey-win32-x64.zip'))
+});
+
+task('release:darwin-x64', () => {
+	return src(filesToRelease)
+		.pipe(electron({
+			version: '0.33.3',
+			platform: 'darwin',
+			arch: 'x64'
+		}))
+		.pipe(electron.zfsdest('./release/disskey-darwin-x64.zip'))
 });
 
 task('test', ['build', 'lint']);
