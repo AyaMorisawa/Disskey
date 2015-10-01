@@ -1,47 +1,35 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as mkdirp from 'mkdirp';
+import * as fs from 'fs-extra';
 
-export function writeJsonFile<T>(filePath: string, data: T): void {
+export function outputJson<T>(file: string, object: T) {
 	'use strict';
-	writeTextFile(filePath, JSON.stringify(data, null, '\t'));
-}
-
-export function writeTextFile(filePath: string, data: string): void {
-	'use strict';
-	mkdirp(path.dirname(filePath), () => fs.writeFile(filePath, data));
-}
-
-export function existFile(filePath: string) {
-	'use strict';
-	return new Promise<boolean>((resolve, reject) => {
-		fs.stat(filePath, (err, stat) => {
+	return new Promise<void>((resolve, reject) => {
+		fs.outputJson(file, object, err => {
 			if (err) {
-				if (err.code === 'ENOENT') {
-					resolve(false);
-				} else {
-					reject(err);
-				}
+				reject();
 			} else {
-				resolve(true);
+				resolve();
 			}
 		});
 	});
 }
 
-export function readJsonFile<T>(filePath: string): Promise<T> {
+export function exists(path: string) {
 	'use strict';
-	return readTextFile(filePath).then(JSON.parse);
+	return new Promise<boolean>((resolve, reject) => {
+		fs.exists(path, exists => {
+			resolve(exists);
+		});
+	});
 }
 
-export function readTextFile(filePath: string): Promise<string> {
+export function readJson<T>(file: string) {
 	'use strict';
-	return new Promise<string>((resolve, reject) => {
-		fs.readFile(filePath, (err, data) => {
+	return new Promise<T>((resolve, reject) => {
+		fs.readJson(file, (err, data) => {
 			if (err) {
 				reject(err);
 			} else {
-				resolve(data.toString());
+				resolve(data);
 			}
 		});
 	});

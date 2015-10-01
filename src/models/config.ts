@@ -17,9 +17,9 @@ const userConfigFilePath = path.join(userConfigDirPath, 'config.json');
 
 export function loadUserConfig(): Promise<IConfig> {
 	'use strict';
-	return file.existFile(userConfigFilePath).then(exist => {
+	return file.exists(userConfigFilePath).then(exist => {
 		if (exist) {
-			return file.readJsonFile<IConfig>(userConfigFilePath);
+			return file.readJson<IConfig>(userConfigFilePath);
 		} else {
 			saveUserConfig(appConfig);
 			return Promise.resolve({});
@@ -29,5 +29,5 @@ export function loadUserConfig(): Promise<IConfig> {
 
 export function saveUserConfig(userConfig: IConfig): void {
 	'use strict';
-	file.writeJsonFile(userConfigFilePath, userConfig);
+	file.outputJson(userConfigFilePath, userConfig);
 }
