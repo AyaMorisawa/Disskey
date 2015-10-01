@@ -1,7 +1,7 @@
 {
   "name": "disskey",
   "version": "0.1.0",
-  "description": "Misskey client for desktop",
+  "description": "A lightweight Misskey client for desktop",
   "main": "./built/index.js",
   "bin": "./bin/disskey",
   "repository": {

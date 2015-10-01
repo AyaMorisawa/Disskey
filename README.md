@@ -3,7 +3,7 @@
 Disskey
 ====
 
-Misskey client for desktop
+A lightweight Misskey client for desktop
 
 ## Installation
 
