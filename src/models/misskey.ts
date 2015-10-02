@@ -1,7 +1,6 @@
 import {Options as requestOptions} from 'request';
 import request from './request-promise';
 import { appConfig } from './config';
-import Z from '../utils/Z';
 import * as Kefir from 'kefir';
 import * as WebSocket from 'ws';
 
@@ -101,38 +100,6 @@ export class StatusApi extends MisskeyApi {
 			socket.on('message', emitter.emit);
 			return () => socket.close();
 		}).map<{ event: string, data: any }>(JSON.parse);
-	}
-
-	createTimelineIntervalStream(lastCursor?: number) {
-		return Kefir.stream(emitter => {
-			let isActive = true;
-			Z<number, void>(f => interval => {
-				this.getTimeline({sinceCursor: lastCursor})
-					.then(statuses => statuses.sort((a, b) => a.cursor - b.cursor))
-					.then(statuses => {
-						if (statuses.length >= 1) {
-							statuses.filter(isNewStatus).forEach(emitter.emit);
-							const lastStatus = statuses[statuses.length - 1];
-							if (isNewStatus(lastStatus)) {
-								lastCursor = lastStatus.cursor;
-							}
-						}
-						function isNewStatus(status: any) {
-							return lastCursor === void 0 || status.cursor > lastCursor;
-						}
-					})
-					.then(next, next);
-				function next() {
-					if (isActive) {
-						setTimeout(() => f(interval), interval);
-					}
-				}
-			})(1000);
-			function deactive() {
-				isActive = false;
-			}
-			return deactive;
-		});
 	}
 
 	getTimeline(options: {sinceCursor?: number, maxCursor?: number, count?: number} = {}) {
