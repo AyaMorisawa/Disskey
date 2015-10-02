@@ -45,9 +45,7 @@ export function createConfigProperty(): Promise<Kefir.Property<IConfig, void>> {
 	return loadUserConfig().then(initialUserConfig => {
 		return Kefir.stream<IConfig, void>(emitter => {
 			file.watch(userConfigFilePath).onValue(() => {
-				loadUserConfig().then(currentUserConfig => {
-					emitter.emit(currentUserConfig);
-				});
+				loadUserConfig().then(emitter.emit);
 			});
 		})
 		.toProperty(() => initialUserConfig)
