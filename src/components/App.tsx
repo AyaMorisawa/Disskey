@@ -71,7 +71,7 @@ export default class App extends React.Component<{}, IAppState> {
 	onSubmitPincode(pincode: string) {
 		const session = this.state.session;
 		if (session !== void 0) {
-			Token.create(session, pincode).then(this.onGetToken);
+			Token.create(session, pincode).then(this.onGetToken.bind(this));
 		}
 	}
 
