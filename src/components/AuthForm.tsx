@@ -24,7 +24,6 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 	componentDidMount() {
 		SAuth.Session.create(this.props.appKey).then(session => {
 			this.setState({session});
-			// session.openAuthorizePage();
 			openExternal(session.authorizePageUrl);
 		});
 	}
