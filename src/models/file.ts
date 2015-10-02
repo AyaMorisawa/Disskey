@@ -18,9 +18,7 @@ export function outputJson<T>(file: string, object: T) {
 export function exists(path: string) {
 	'use strict';
 	return new Promise<boolean>((resolve, reject) => {
-		fs.exists(path, exists => {
-			resolve(exists);
-		});
+		fs.exists(path, resolve);
 	});
 }
 
