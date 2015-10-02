@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Token } from '../models/misskey';
+import { SAuth, Token } from '../models/misskey';
 import AuthForm, { IAuthFormProps } from './AuthForm';
 import PostFrom from './PostForm';
 import Timeline from './Timeline';
@@ -7,6 +7,7 @@ import { IConfig, updateUserConfig, createConfigProperty } from '../models/confi
 import { Match } from 'satch';
 import FixedContainer from './FixedContainer';
 import { IPostProps } from './Post';
+import { openExternal } from 'shell';
 const remote = require('remote');
 const { AppBar, IconButton, Styles } = require('material-ui');
 const { ThemeManager, ThemeDecorator } = Styles;
@@ -18,6 +19,7 @@ interface IAppState {
 	existToken?: boolean;
 	config?: IConfig;
 	timeline?: IPostProps[];
+	session?: SAuth.Session;
 }
 
 @ThemeDecorator(ThemeManager.getMuiTheme(Styles.LightRawTheme))
@@ -48,6 +50,10 @@ export default class App extends React.Component<{}, IAppState> {
 						ready: true,
 						config: config
 					});
+					SAuth.Session.create(config.appKey).then(session => {
+						this.setState({session});
+						openExternal(session.authorizePageUrl);
+					});
 				}
 			});
 		});
@@ -59,6 +65,13 @@ export default class App extends React.Component<{}, IAppState> {
 		}
 		if (!prevState.existToken && this.state.existToken) {
 			this.startTimeline();
+		}
+	}
+
+	onSubmitPincode(pincode: string) {
+		const session = this.state.session;
+		if (session !== void 0) {
+			Token.create(session, pincode).then(this.onGetToken);
 		}
 	}
 
@@ -140,9 +153,7 @@ export default class App extends React.Component<{}, IAppState> {
 					new Match<any, React.DOMElement<React.HTMLAttributes> | React.ReactElement<IAuthFormProps>>(null)
 						.when(() => !this.state.ready, () => <div></div>)
 						.when(() => !this.state.existToken, () =>
-							<AuthForm
-								appKey={this.state.config.appKey}
-								onGetToken={this.onGetToken.bind(this)} />
+							<AuthForm onSubmit={this.onSubmitPincode.bind(this)} />
 						)
 						.default(() =>
 							<div>

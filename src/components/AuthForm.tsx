@@ -1,16 +1,12 @@
 import * as React from 'react';
-import { SAuth, Token } from '../models/misskey';
-import { openExternal } from 'shell';
 const { RaisedButton, TextField }  = require('material-ui');
 
 export interface IAuthFormProps {
-	appKey: string;
-	onGetToken: (token: Token) => void;
+	onSubmit: (pincode: string) => void;
 }
 
 export interface IAuthFormState {
 	pincode?: string;
-	session?: SAuth.Session;
 }
 
 export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormState> {
@@ -21,23 +17,12 @@ export default class AuthForm extends React.Component<IAuthFormProps, IAuthFormS
 		};
 	}
 
-	componentDidMount() {
-		SAuth.Session.create(this.props.appKey).then(session => {
-			this.setState({session});
-			openExternal(session.authorizePageUrl);
-		});
-	}
-
 	onChangePincode(e: any) {
 		this.setState({pincode: e.target.value});
 	}
 
 	onSubmitPincode() {
-		const session = this.state.session;
-		if (session !== void 0) {
-			Token.create(session, this.state.pincode)
-				.then(this.props.onGetToken);
-		}
+		this.props.onSubmit(this.state.pincode);
 	};
 
 	render() {
