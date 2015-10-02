@@ -158,7 +158,7 @@ export default class App extends React.Component<{}, IAppState> {
 						.default(() =>
 							<div>
 								<PostFrom onSubmit={this.updateStatus.bind(this)} />
-								<Timeline style={{padding: '0 0'} as any} posts={this.state.timeline}/>
+								<Timeline style={{padding: '0 0'} as any} posts={this.state.timeline} />
 							</div>
 						)
 				}</FixedContainer>
