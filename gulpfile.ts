@@ -92,7 +92,7 @@ task('release:linux-ia32', () => {
 			platform: 'linux',
 			arch: 'ia32'
 		}))
-		.pipe(electron.zfsdest('./release/disskey-linux-ia32.zip'))
+		.pipe(electron.zfsdest('./release/disskey-linux-ia32.zip'));
 });
 
 task('release:linux-x64', () => {
@@ -102,7 +102,7 @@ task('release:linux-x64', () => {
 			platform: 'linux',
 			arch: 'x64'
 		}))
-		.pipe(electron.zfsdest('./release/disskey-linux-x64.zip'))
+		.pipe(electron.zfsdest('./release/disskey-linux-x64.zip'));
 });
 
 task('release:linux-arm', () => {
@@ -112,7 +112,7 @@ task('release:linux-arm', () => {
 			platform: 'linux',
 			arch: 'arm'
 		}))
-		.pipe(electron.zfsdest('./release/disskey-linux-arm.zip'))
+		.pipe(electron.zfsdest('./release/disskey-linux-arm.zip'));
 });
 
 task('release:win32-ia32', () => {
@@ -122,7 +122,7 @@ task('release:win32-ia32', () => {
 			platform: 'win32',
 			arch: 'ia32'
 		}))
-		.pipe(electron.zfsdest('./release/disskey-win32-ia32.zip'))
+		.pipe(electron.zfsdest('./release/disskey-win32-ia32.zip'));
 });
 
 task('release:win32-x64', () => {
@@ -132,7 +132,7 @@ task('release:win32-x64', () => {
 			platform: 'win32',
 			arch: 'x64'
 		}))
-		.pipe(electron.zfsdest('./release/disskey-win32-x64.zip'))
+		.pipe(electron.zfsdest('./release/disskey-win32-x64.zip'));
 });
 
 task('release:darwin-x64', () => {
@@ -142,7 +142,7 @@ task('release:darwin-x64', () => {
 			platform: 'darwin',
 			arch: 'x64'
 		}))
-		.pipe(electron.zfsdest('./release/disskey-darwin-x64.zip'))
+		.pipe(electron.zfsdest('./release/disskey-darwin-x64.zip'));
 });
 
 task('test', ['build', 'lint']);
