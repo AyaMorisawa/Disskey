@@ -2,6 +2,7 @@
 
 Disskey
 ====
+**This repository is no longer maintained.**
 
 A lightweight Misskey client for desktop
 
